@@ -1,112 +1,129 @@
 /* my-questions-solutions2/mqs2-age2.js
-   Part 2 Age batch 2: 'after N years' cube, 'N years ago' square & cube.
-   Dynamic per-sample full worked solutions. NAYA file; existing kuch modify nahi karta.
+   Part 2 Age batch 2: after-years (cube), years-ago (square), years-ago (cube + validity).
+   Dynamic per-sample worked solutions. NAYA file; existing kuch modify nahi karta.
    Covers: q2_age_after_cube, q2_age_ago_sq, q2_age_ago_cube
 */
 (function () {
   'use strict';
   var Q = window.MQS2;
   if (!Q) { try { console.warn('[mqs2-age2] MQS2 missing'); } catch (e) {} return; }
-  var K = Q.K, RT = Q.RT, CRT = Q.CRT, BOX = Q.BOX, X = Q.X, TRI = Q.TRI, isqrt = Q.isqrt, icbrt = Q.icbrt;
+  var K = Q.K, RT = Q.RT, CRT = Q.CRT, BOX = Q.BOX, TRI = Q.TRI, isqrt = Q.isqrt, icbrt = Q.icbrt;
   function AC(out) { return Q.ansClean(out); }
   var U = ['Step 1: Understand the question', 'Step 1: Sawaal samjho', 'चरण 1: प्रश्न समझो'];
-  var SANS = ['Step 3: Final answer', 'Step 3: Final answer', 'चरण 3: अंतिम उत्तर'];
+  function rootOf(r) { return r.cube ? icbrt(r.inner) : isqrt(Q.evalSum(r.inner)); }
+  function rootTex(r) { return r.cube ? CRT(r.inner) : RT(r.inner); }
+  function powBase(q, mark) { var ix = q.indexOf(mark); if (ix < 0) return null; var j = ix - 1, s = ''; while (j >= 0 && q.charAt(j) >= '0' && q.charAt(j) <= '9') { s = q.charAt(j) + s; j--; } return s ? parseInt(s, 10) : null; }
 
   function solAfterCube(out) {
-    var q = out.question.en;
+    var q = out.question.en, rad = Q.radicands(q), ii = Q.ints(q), i;
     if (/how many years/i.test(q)) {
-      var ii = Q.ints(q); var P = ii[0], V = ii[ii.length - 1]; var root = icbrt(V);
+      var pm = q.match(/Present age is ([0-9]+)/i); var present = pm ? parseInt(pm[1], 10) : null;
+      var target = null; for (i = 0; i < ii.length; i++) { if (ii[i] !== present) { target = ii[i]; break; } }
       return TRI([
-        { t: U, b: ['Present age is ' + P + '; find when it becomes the perfect cube ' + V + ' (' + K(root + '^3') + ').', 'Present umar ' + P + '; kab ' + V + ' (perfect cube ' + K(root + '^3') + ') hogi.', 'वर्तमान उम्र ' + P + '; कब ' + V + ' (पूर्ण घन ' + K(root + '^3') + ') होगी।'] },
-        { t: ['Step 2: Subtract', 'Step 2: Ghatao', 'चरण 2: घटाओ'], b: K('(' + V + ' - ' + P + ') = ' + BOX(AC(out))) + ' years' }
+        { t: U, b: ['Present age is ' + present + ' and the future age (a perfect cube) is ' + target + '.', 'Abhi umar ' + present + ', aage wali umar (perfect cube) ' + target + '.', 'अभी उम्र ' + present + ', आगे की उम्र (perfect cube) ' + target + '।'] },
+        { t: ['Step 2: Years needed', 'Step 2: Kitne saal', 'चरण 2: कितने साल'], b: ['Years = future age - present age.', 'Saal = aage umar - abhi umar.', 'वर्ष = आगे उम्र - अभी उम्र।'] },
+        { t: ['Step 3: Compute', 'Step 3: Compute', 'चरण 3: गणना'], b: K('(' + target + ' - ' + present + ') = ' + BOX(AC(out))) }
       ],
-        ['Years = cube age - present age = ' + K(V + ' - ' + P) + '.', 'Saal = cube - present.', 'वर्ष = घन - वर्तमान।'],
-        ['Subtract present age from the target cube.', 'Target cube me se present ghatao.', 'लक्ष्य घन में से वर्तमान घटाओ।']);
+        ['Years = future - present = ' + K(target + ' - ' + present) + '.', 'Saal = aage - abhi.', 'वर्ष = आगे - अभी।'],
+        ['Subtract the present age from the target cube age.', 'Target cube umar me se abhi ki umar ghatao.', 'लक्ष्य उम्र में से अभी की उम्र घटाओ।']);
     }
-    var km = q.match(/after[^0-9]*([0-9]+)/i); var k = km ? parseInt(km[1], 10) : 0;
-    var present = Q.ansNum(out); var future = present + k; var root2 = icbrt(future);
+    var k = parseInt(q.match(/After ([0-9]+)/i)[1], 10);
+    var V, Vtex;
+    if (rad.length) { V = rootOf(rad[0]); Vtex = K(rootTex(rad[0]) + ' = ' + V); }
+    else { var cb = powBase(q, '^3'); if (cb !== null) { V = cb * cb * cb; Vtex = K(cb + '^{3} = ' + V); } else { var t = null; for (i = 0; i < ii.length; i++) { if (ii[i] !== k) { t = ii[i]; break; } } V = t; Vtex = K('' + V) + ' (a perfect cube)'; } }
     return TRI([
-      { t: U, b: ['After ' + k + ' years the age becomes ' + future + ', the perfect cube ' + K(root2 + '^3') + '.', 'After ' + k + ' years umar ' + future + ' = perfect cube ' + K(root2 + '^3') + '.', 'After ' + k + ' years उम्र ' + future + ' = पूर्ण घन ' + K(root2 + '^3') + '।'] },
-      { t: ['Step 2: Work backwards', 'Step 2: Ulta chalo', 'चरण 2: उल्टा चलो'], b: ['Present age = future age - ' + k + ' years.', 'Present = future - ' + k + '.', 'वर्तमान = भविष्य - ' + k + '।'] },
-      { t: SANS, b: K('(' + future + ' - ' + k + ') = ' + BOX(AC(out))) + ' years' }
+      { t: U, b: ['After ' + k + ' years the age will be ' + Vtex + '. Find the present age.', k + ' saal baad umar ' + Vtex + ' hogi. Abhi ki umar nikaalo.', k + ' साल बाद उम्र ' + Vtex + ' होगी। अभी की उम्र निकालो।'] },
+      { t: ['Step 2: Future age value', 'Step 2: Aage ki umar', 'चरण 2: आगे की उम्र'], b: ['Future age = ' + V + '.', 'Future age = ' + V + '.', 'आगे उम्र = ' + V + '।'] },
+      { t: ['Step 3: Subtract the years', 'Step 3: Saal ghatao', 'चरण 3: वर्ष घटाओ'], b: K('(' + V + ' - ' + k + ') = ' + BOX(AC(out))) }
     ],
-      ['Subtract the added years: ' + K(future + ' - ' + k) + '.', 'Jode hue saal ghatao.', 'जोड़े गए वर्ष घटाओ।'],
-      ['Present age = (perfect cube) - ' + k + '.', 'Present = (perfect cube) - ' + k + '.', 'वर्तमान = (पूर्ण घन) - ' + k + '।']);
+      ['Present age = future age - ' + k + ' = ' + K(V + ' - ' + k) + '.', 'Abhi umar = aage umar - ' + k + '.', 'अभी उम्र = आगे उम्र - ' + k + '।'],
+      ['Find the cube value, then subtract the elapsed years.', 'Cube nikaalo, phir beete saal ghatao.', 'घन निकालो, फिर बीते वर्ष घटाओ।']);
   }
 
-  function agoYears(q) { var m = q.match(/([0-9]+)[^A-Za-z0-9]*years ago/i); return m ? parseInt(m[1], 10) : 0; }
-
   function solAgoSq(out) {
-    var q = out.question.en, rad = Q.radicands(q);
+    var q = out.question.en, rad = Q.radicands(q), ii = Q.ints(q), i;
     if (/how many years ago/i.test(q)) {
-      var ii = Q.ints(q); var P = ii[0], V = ii[ii.length - 1]; var root = isqrt(V);
+      var pm = q.match(/Present age is ([0-9]+)/i); var present = pm ? parseInt(pm[1], 10) : null;
+      var past = null; for (i = 0; i < ii.length; i++) { if (ii[i] !== present) { past = ii[i]; break; } }
       return TRI([
-        { t: U, b: ['Present age is ' + P + '; find how long ago the age was the perfect square ' + V + ' (' + K(root + '^2') + ').', 'Present ' + P + '; kitne saal pehle umar ' + V + ' (square ' + K(root + '^2') + ') thi.', 'वर्तमान ' + P + '; कितने वर्ष पहले उम्र ' + V + ' (वर्ग ' + K(root + '^2') + ') थी।'] },
-        { t: ['Step 2: Subtract', 'Step 2: Ghatao', 'चरण 2: घटाओ'], b: K('(' + P + ' - ' + V + ') = ' + BOX(AC(out))) + ' years ago' }
+        { t: U, b: ['Present age is ' + present + ' and the past age (a perfect square) was ' + past + '.', 'Abhi umar ' + present + ', pehle ki umar (perfect square) ' + past + '.', 'अभी उम्र ' + present + ', पहले की उम्र (perfect square) ' + past + '।'] },
+        { t: ['Step 2: Years passed', 'Step 2: Kitne saal pehle', 'चरण 2: कितने साल पहले'], b: ['Years ago = present age - past age.', 'Saal pehle = abhi - pehle.', 'वर्ष पहले = अभी - पहले।'] },
+        { t: ['Step 3: Compute', 'Step 3: Compute', 'चरण 3: गणना'], b: K('(' + present + ' - ' + past + ') = ' + BOX(AC(out))) }
       ],
-        ['Years ago = present - past age = ' + K(P + ' - ' + V) + '.', 'Saal pehle = present - past.', 'वर्ष पहले = वर्तमान - भूत।'],
-        ['Subtract the past square from present age.', 'Present me se past square ghatao.', 'वर्तमान में से भूत वर्ग घटाओ।']);
+        ['Years ago = present - past = ' + K(present + ' - ' + past) + '.', 'Saal pehle = abhi - pehle.', 'वर्ष पहले = अभी - पहले।'],
+        ['Subtract the past age from the present age.', 'Abhi umar me se pehle ki umar ghatao.', 'अभी उम्र में से पहले की उम्र घटाओ।']);
     }
-    if (/after/i.test(q) && q.indexOf('?') >= 0) {
-      var k1 = agoYears(q);
-      var pastV = rad.length ? isqrt(Q.evalSum(rad[0].inner)) : Q.ints(q)[1];
-      var afm = q.match(/after[^0-9]*([0-9]+)/i); var k2 = afm ? parseInt(afm[1], 10) : 0;
-      var present = pastV + k1;
+    var agoM = q.match(/([0-9]+) years ago/i); var k1 = agoM ? parseInt(agoM[1], 10) : 0;
+    var afterM = q.match(/after ([0-9]+)/i);
+    var V, Vtex;
+    if (rad.length) { V = rootOf(rad[0]); Vtex = K(rootTex(rad[0]) + ' = ' + V); }
+    else { var used = {}; used[k1] = 1; if (afterM) used[parseInt(afterM[1], 10)] = 1; V = null; for (i = 0; i < ii.length; i++) { if (!used[ii[i]]) { V = ii[i]; break; } } Vtex = K('' + V); }
+    var present = V + k1;
+    if (afterM) {
+      var k2 = parseInt(afterM[1], 10);
       return TRI([
-        { t: U, b: ['First find the present age, then the age after ' + k2 + ' more years.', 'Pehle present nikaalo, phir ' + k2 + ' saal baad ki umar.', 'पहले वर्तमान निकालो, फिर ' + k2 + ' वर्ष बाद की उम्र।'] },
-        { t: ['Step 2: Present age', 'Step 2: Present umar', 'चरण 2: वर्तमान उम्र'], b: ['Present = past age + years ago = ' + K('(' + pastV + ' + ' + k1 + ') = ' + present) + '.', 'Present = past + saal pehle = ' + K('(' + pastV + ' + ' + k1 + ') = ' + present) + '.', 'वर्तमान = भूत + वर्ष पहले = ' + K('(' + pastV + ' + ' + k1 + ') = ' + present) + '।'] },
-        { t: ['Step 3: Add future years', 'Step 3: Future saal jodo', 'चरण 3: भविष्य वर्ष जोड़ो'], b: K('(' + present + ' + ' + k2 + ') = ' + BOX(AC(out))) + ' years' }
+        { t: U, b: [k1 + ' years ago the age was ' + Vtex + '; find the age after ' + k2 + ' more years.', k1 + ' saal pehle umar ' + Vtex + ' thi; ' + k2 + ' saal baad ki umar nikaalo.', k1 + ' साल पहले उम्र ' + Vtex + ' थी; ' + k2 + ' साल बाद की उम्र निकालो।'] },
+        { t: ['Step 2: Present age', 'Step 2: Abhi ki umar', 'चरण 2: अभी की उम्र'], b: K('(' + V + ' + ' + k1 + ') = ' + present) },
+        { t: ['Step 3: Add ' + k2 + ' more years', 'Step 3: ' + k2 + ' saal aur jodo', 'चरण 3: ' + k2 + ' साल और जोड़ो'], b: K('(' + present + ' + ' + k2 + ') = ' + BOX(AC(out))) }
       ],
-        ['Present = ' + present + ', then + ' + k2 + ' = ' + AC(out) + '.', 'Present ' + present + ', phir + ' + k2 + '.', 'वर्तमान ' + present + ', फिर + ' + k2 + '।'],
-        ['Two steps: reach the present, then go forward ' + k2 + ' years.', 'Do step: present pe aao, phir aage.', 'दो चरण: वर्तमान, फिर आगे।']);
+        ['First present = past + ' + k1 + ', then add ' + k2 + '.', 'Pehle present = past + ' + k1 + ', phir + ' + k2 + '.', 'पहले present = past + ' + k1 + ', फिर + ' + k2 + '।'],
+        ['Recover the present age first, then move forward.', 'Pehle present nikaalo, phir aage badho.', 'पहले present निकालो, फिर आगे बढ़ो।']);
     }
-    var k = agoYears(q);
-    var V = rad.length ? isqrt(Q.evalSum(rad[0].inner)) : Q.ints(q)[Q.ints(q).length - 1];
     return TRI([
-      { t: U, b: [k + ' years ago the age was ' + V + (rad.length ? ' (= ' + K(RT(rad[0].inner)) + ')' : '') + '.', k + ' saal pehle umar ' + V + ' thi.', k + ' वर्ष पहले उम्र ' + V + ' थी।'] },
-      { t: ['Step 2: Move to the present', 'Step 2: Present pe aao', 'चरण 2: वर्तमान पर आओ'], b: ['Present age = past age + years passed.', 'Present = past + bite saal.', 'वर्तमान = भूत + बीते वर्ष।'] },
-      { t: SANS, b: K('(' + V + ' + ' + k + ') = ' + BOX(AC(out))) + ' years' }
+      { t: U, b: [k1 + ' years ago the age was ' + Vtex + '. Find the present age.', k1 + ' saal pehle umar ' + Vtex + ' thi. Abhi ki umar nikaalo.', k1 + ' साल पहले उम्र ' + Vtex + ' थी। अभी की उम्र निकालो।'] },
+      { t: ['Step 2: Past age value', 'Step 2: Pehle ki umar', 'चरण 2: पहले की उम्र'], b: ['Past age = ' + V + '.', 'Past age = ' + V + '.', 'पहले उम्र = ' + V + '।'] },
+      { t: ['Step 3: Add the years', 'Step 3: Saal jodo', 'चरण 3: वर्ष जोड़ो'], b: K('(' + V + ' + ' + k1 + ') = ' + BOX(AC(out))) }
     ],
-      ['Add the elapsed years: ' + K(V + ' + ' + k) + '.', 'Bite saal jodo.', 'बीते वर्ष जोड़ो।'],
-      ['Present age = past age + ' + k + '.', 'Present = past + ' + k + '.', 'वर्तमान = भूत + ' + k + '।']);
+      ['Present age = past age + ' + k1 + ' = ' + K(V + ' + ' + k1) + '.', 'Abhi umar = pehle umar + ' + k1 + '.', 'अभी उम्र = पहले उम्र + ' + k1 + '।'],
+      ['Find the square value, then add the elapsed years.', 'Square nikaalo, phir beete saal jodo.', 'वर्ग निकालो, फिर बीते वर्ष जोड़ो।']);
   }
 
   function solAgoCube(out) {
-    var q = out.question.en, rad = Q.radicands(q);
+    var q = out.question.en, rad = Q.radicands(q), ii = Q.ints(q), i;
     if (/valid/i.test(q)) {
-      var inner = rad.length ? rad[0].inner : '';
-      var val = inner ? Math.round(Math.cbrt(parseFloat(inner))) : null;
+      var inner = rad.length ? rad[0].inner : '?'; var rv = rad.length ? icbrt(rad[0].inner) : null;
       return TRI([
-        { t: U, b: ['We are told the past age equals ' + K(CRT(inner)) + '.', 'Kaha gaya hai past umar ' + K(CRT(inner)) + ' hai.', 'कहा गया है भूत उम्र ' + K(CRT(inner)) + ' है।'] },
-        { t: ['Step 2: Evaluate the cube root', 'Step 2: Cube root nikaalo', 'चरण 2: घनमूल निकालो'], b: K(CRT(inner) + ' = ' + val) },
-        { t: ['Step 3: Check feasibility', 'Step 3: Sambhav hai?', 'चरण 3: संभव है?'], b: ['A real age can never be negative, so ' + val + ' is impossible as an age.', 'Umar kabhi negative nahi hoti, isliye ' + val + ' age ho hi nahi sakti.', 'उम्र कभी ऋणात्मक नहीं होती, इसलिए ' + val + ' संभव नहीं।'] },
-        { t: ['Step 4: Conclusion', 'Step 4: Nishkarsh', 'चरण 4: निष्कर्ष'], b: 'Therefore the answer is ' + K(BOX(AC(out))) + '.' }
+        { t: U, b: ['The past age is given as ' + K(rad.length ? rootTex(rad[0]) : '?') + ', a cube root of a negative number.', 'Pehle ki umar ' + K(rad.length ? rootTex(rad[0]) : '?') + ' di hai, jo negative ka cube root hai.', 'पहले की उम्र ' + K(rad.length ? rootTex(rad[0]) : '?') + ' दी है, जो ऋणात्मक का घनमूल है।'] },
+        { t: ['Step 2: Evaluate the cube root', 'Step 2: Ghanmool nikaalo', 'चरण 2: घनमूल निकालो'], b: K(rad.length ? rootTex(rad[0]) + ' = ' + rv : '?') },
+        { t: ['Step 3: Check the age context', 'Step 3: Umar ke hisaab se jaancho', 'चरण 3: उम्र के संदर्भ में जाँचो'], b: ['An age can never be negative, so this is ' + AC(out) + '.', 'Umar kabhi negative nahi hoti, isliye ' + AC(out) + '.', 'उम्र कभी ऋणात्मक नहीं होती, इसलिए ' + AC(out) + '।'] }
       ],
-        ['A negative cube root means a negative age — not valid.', 'Negative cube root = negative age — valid nahi.', 'ऋणात्मक घनमूल = ऋणात्मक उम्र — मान्य नहीं।'],
-        ['Can an age be negative?', 'Kya umar negative ho sakti hai?', 'क्या उम्र ऋणात्मक हो सकती है?']);
+        ['A cube root of a negative number is negative; ages cannot be negative.', 'Negative ka cube root negative; umar negative nahi ho sakti.', 'ऋणात्मक का घनमूल ऋणात्मक; उम्र ऋणात्मक नहीं।'],
+        ['Can a real-life age ever be a negative number?', 'Kya asli umar negative ho sakti hai?', 'क्या वास्तविक उम्र ऋणात्मक हो सकती है?']);
     }
-    if (/after/i.test(q) && q.indexOf('?') >= 0) {
-      var k1 = agoYears(q);
-      var pastV = rad.length ? Math.round(Math.cbrt(parseFloat(rad[0].inner))) : Q.ints(q)[1];
-      var afm = q.match(/after[^0-9]*([0-9]+)/i); var k2 = afm ? parseInt(afm[1], 10) : 0;
-      var present = pastV + k1;
+    if (/how many years ago/i.test(q)) {
+      var pm = q.match(/Present age is ([0-9]+)/i); var present = pm ? parseInt(pm[1], 10) : null;
+      var past = null; for (i = 0; i < ii.length; i++) { if (ii[i] !== present) { past = ii[i]; break; } }
       return TRI([
-        { t: U, b: ['First find the present age, then the age after ' + k2 + ' more years.', 'Pehle present, phir ' + k2 + ' saal baad.', 'पहले वर्तमान, फिर ' + k2 + ' वर्ष बाद।'] },
-        { t: ['Step 2: Present age', 'Step 2: Present', 'चरण 2: वर्तमान'], b: K('(' + pastV + ' + ' + k1 + ') = ' + present) },
-        { t: ['Step 3: Add future years', 'Step 3: Aage jodo', 'चरण 3: आगे जोड़ो'], b: K('(' + present + ' + ' + k2 + ') = ' + BOX(AC(out))) + ' years' }
+        { t: U, b: ['Present age is ' + present + ' and the past age (a perfect cube) was ' + past + '.', 'Abhi umar ' + present + ', pehle (perfect cube) ' + past + '.', 'अभी उम्र ' + present + ', पहले (perfect cube) ' + past + '।'] },
+        { t: ['Step 2: Years passed', 'Step 2: Kitne saal pehle', 'चरण 2: कितने साल पहले'], b: ['Years ago = present - past.', 'Saal pehle = abhi - pehle.', 'वर्ष पहले = अभी - पहले।'] },
+        { t: ['Step 3: Compute', 'Step 3: Compute', 'चरण 3: गणना'], b: K('(' + present + ' - ' + past + ') = ' + BOX(AC(out))) }
       ],
-        ['Present ' + present + ', then + ' + k2 + '.', 'Present ' + present + ', phir + ' + k2 + '.', 'वर्तमान ' + present + ', फिर + ' + k2 + '।'],
-        ['Two steps: reach present, then move forward.', 'Do step.', 'दो चरण।']);
+        ['Years ago = present - past.', 'Saal pehle = abhi - pehle.', 'वर्ष पहले = अभी - पहले।'],
+        ['Subtract the past cube age from the present age.', 'Abhi me se pehle ki cube umar ghatao.', 'अभी में से पहले की घन उम्र घटाओ।']);
     }
-    var k = agoYears(q);
-    var V = rad.length ? Math.round(Math.cbrt(parseFloat(rad[0].inner))) : Q.ints(q)[Q.ints(q).length - 1];
+    var agoM = q.match(/([0-9]+) years ago/i); var k1 = agoM ? parseInt(agoM[1], 10) : 0;
+    var afterM = q.match(/after ([0-9]+)/i);
+    var V, Vtex;
+    if (rad.length) { V = rootOf(rad[0]); Vtex = K(rootTex(rad[0]) + ' = ' + V); }
+    else { var used = {}; used[k1] = 1; if (afterM) used[parseInt(afterM[1], 10)] = 1; V = null; for (i = 0; i < ii.length; i++) { if (!used[ii[i]]) { V = ii[i]; break; } } Vtex = K('' + V); }
+    var present = V + k1;
+    if (afterM) {
+      var k2 = parseInt(afterM[1], 10);
+      return TRI([
+        { t: U, b: [k1 + ' years ago the age was ' + Vtex + '; find the age after ' + k2 + ' more years.', k1 + ' saal pehle umar ' + Vtex + ' thi; ' + k2 + ' saal baad ki umar nikaalo.', k1 + ' साल पहले उम्र ' + Vtex + ' थी; ' + k2 + ' साल बाद की उम्र निकालो।'] },
+        { t: ['Step 2: Present age', 'Step 2: Abhi ki umar', 'चरण 2: अभी की उम्र'], b: K('(' + V + ' + ' + k1 + ') = ' + present) },
+        { t: ['Step 3: Add ' + k2 + ' more years', 'Step 3: ' + k2 + ' saal aur jodo', 'चरण 3: ' + k2 + ' साल और जोड़ो'], b: K('(' + present + ' + ' + k2 + ') = ' + BOX(AC(out))) }
+      ],
+        ['Present = past + ' + k1 + ', then add ' + k2 + '.', 'Present = past + ' + k1 + ', phir + ' + k2 + '.', 'Present = past + ' + k1 + ', फिर + ' + k2 + '।'],
+        ['Recover the present age first, then move forward.', 'Pehle present nikaalo, phir aage badho.', 'पहले present निकालो, फिर आगे बढ़ो।']);
+    }
     return TRI([
-      { t: U, b: [k + ' years ago the age was ' + V + (rad.length ? ' (= ' + K(CRT(rad[0].inner)) + ')' : '') + '.', k + ' saal pehle umar ' + V + ' thi.', k + ' वर्ष पहले उम्र ' + V + ' थी।'] },
-      { t: ['Step 2: Move to the present', 'Step 2: Present pe aao', 'चरण 2: वर्तमान पर आओ'], b: ['Present age = past age + years passed.', 'Present = past + bite saal.', 'वर्तमान = भूत + बीते वर्ष।'] },
-      { t: SANS, b: K('(' + V + ' + ' + k + ') = ' + BOX(AC(out))) + ' years' }
+      { t: U, b: [k1 + ' years ago the age was ' + Vtex + '. Find the present age.', k1 + ' saal pehle umar ' + Vtex + ' thi. Abhi ki umar nikaalo.', k1 + ' साल पहले उम्र ' + Vtex + ' थी। अभी की उम्र निकालो।'] },
+      { t: ['Step 2: Past age value', 'Step 2: Pehle ki umar', 'चरण 2: पहले की उम्र'], b: ['Past age = ' + V + '.', 'Past age = ' + V + '.', 'पहले उम्र = ' + V + '।'] },
+      { t: ['Step 3: Add the years', 'Step 3: Saal jodo', 'चरण 3: वर्ष जोड़ो'], b: K('(' + V + ' + ' + k1 + ') = ' + BOX(AC(out))) }
     ],
-      ['Add elapsed years: ' + K(V + ' + ' + k) + '.', 'Bite saal jodo.', 'बीते वर्ष जोड़ो।'],
-      ['Present = past + ' + k + '.', 'Present = past + ' + k + '.', 'वर्तमान = भूत + ' + k + '।']);
+      ['Present age = past age + ' + k1 + ' = ' + K(V + ' + ' + k1) + '.', 'Abhi umar = pehle umar + ' + k1 + '.', 'अभी उम्र = पहले उम्र + ' + k1 + '।'],
+      ['Find the cube value, then add the elapsed years.', 'Cube nikaalo, phir beete saal jodo.', 'घन निकालो, फिर बीते वर्ष जोड़ो।']);
   }
 
   Q.wrap({ q2_age_after_cube: solAfterCube, q2_age_ago_sq: solAgoSq, q2_age_ago_cube: solAgoCube });
