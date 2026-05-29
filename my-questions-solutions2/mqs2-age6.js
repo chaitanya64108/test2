@@ -36,18 +36,17 @@
     }
     if (/ratio/i.test(q)) {
       var rm = q.match(/([0-9]+) *: *([0-9]+)/); var a = parseInt(rm[1], 10), b = parseInt(rm[2], 10); var k = isqrt(P / (a * b));
-      var older = /older|larger/i.test(q);
       return TRI([
         { t: U, b: ['The ages are in ratio ' + a + ':' + b + ' with product ' + P + '.', 'Umar ratio ' + a + ':' + b + ', product ' + P + '.', 'उम्र अनुपात ' + a + ':' + b + ', गुणनफल ' + P + '।'] },
         { t: ['Step 2: Take ages as ' + a + 'k and ' + b + 'k', 'Step 2: Umar ' + a + 'k aur ' + b + 'k', 'चरण 2: उम्र ' + a + 'k और ' + b + 'k'], b: K('(' + a + 'k)(' + b + 'k) = ' + (a * b) + 'k^{2} = ' + P) + ', so ' + K('k = ' + k) },
-        { t: ['Step 3: The ages', 'Step 3: Umar', 'चरण 3: उम्र'], b: K((a * k) + (older ? '' : '') + ' \u0914\u0930 ' + (b * k)).replace('\\u0914\\u0930', ',') + ' → ' + K(BOX(AC(out))) }
+        { t: ['Step 3: The ages', 'Step 3: Umar', 'चरण 3: उम्र'], b: K((a * k) + ', \\; ' + (b * k)) + ' → ' + K(BOX(AC(out))) }
       ],
         ['Write ages as a' + X() + 'k and b' + X() + 'k, then solve for k.', 'Umar a' + X() + 'k, b' + X() + 'k lo, k nikaalo.', 'उम्र ak, bk लो, k निकालो।'],
         ['Let one part be k; the product gives a square in k.', 'Ek part k; product me k ka square aata hai.', 'एक भाग k; गुणनफल में k² आता है।']);
     }
     var gm = q.match(/(?:one age is|child is) ([0-9]+)/i);
     if (gm) {
-      var given = parseInt(gm[1], 10); var other = P / given;
+      var given = parseInt(gm[1], 10);
       return TRI([
         { t: U, b: ['The product of the two ages is ' + P + ' and one age is ' + given + '.', 'Do umron ka product ' + P + ', ek umar ' + given + '.', 'दो उम्रों का गुणनफल ' + P + ', एक उम्र ' + given + '।'] },
         { t: ['Step 2: Divide', 'Step 2: Bhag do', 'चरण 2: भाग दो'], b: K(P + '/' + given + ' = ' + BOX(AC(out))) }
@@ -59,7 +58,7 @@
     return TRI([
       { t: U, b: ['The product of the two ages is ' + P + ' and their difference is ' + d + '.', 'Do umron ka product ' + P + ', difference ' + d + '.', 'दो उम्रों का गुणनफल ' + P + ', अंतर ' + d + '।'] },
       { t: ['Step 2: Set up the equation', 'Step 2: Samikaran banao', 'चरण 2: समीकरण बनाओ'], b: K('y(y + ' + d + ') = ' + P) + ', i.e. ' + K('y^{2} + ' + d + 'y - ' + P + ' = 0') },
-      { t: ['Step 3: Solve for the younger age', 'Step 3: Choti umar nikaalo', 'चरण 3: छोटी उम्र'], b: ['Solving gives the ages: ' + K(BOX(AC(out))) + '.', 'Solve karne par umar: ' + K(BOX(AC(out))) + '.', 'Solve करने पर उम्र: ' + K(BOX(AC(out))) + '।'] }
+      { t: ['Step 3: Solve for the ages', 'Step 3: Umar nikaalo', 'चरण 3: उम्र निकालो'], b: ['Solving gives the ages: ' + K(BOX(AC(out))) + '.', 'Solve karne par umar: ' + K(BOX(AC(out))) + '.', 'Solve करने पर उम्र: ' + K(BOX(AC(out))) + '।'] }
     ],
       ['Let the younger age be y; then y(y + d) = product.', 'Choti umar y; y(y+d) = product.', 'छोटी उम्र y; y(y+d) = गुणनफल।'],
       ['Form a quadratic from product and difference, then solve.', 'Product aur difference se quadratic, phir solve.', 'गुणनफल और अंतर से quadratic, फिर solve।']);
