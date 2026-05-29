@@ -49,7 +49,7 @@
       S('Step 1: Root simplify karo',K(RT('28')+'=2'+RT('7'))+' kyunki '+K('28=4'+T+'7')+'.'),
       S('Step 2: Value daalo','Diya hai '+K(RT('7')+'=2.645')+', to '+K(RT('28')+'=2'+T+'2.645=5.29')+'.'),
       S('Step 3: Divide karo',K(FR('1',RT('28'))+'='+FR('1','5.29')+AP+'0.189')+', to '+K(BOX('0.189'))+'.')
-    ],'Pehle '+K(RT('28')+'=2'+RT('7'))+', fir divide.','+K(RT('28'))+' ko '+K('2'+RT('7'))+' banao, fir value daalo.'),
+    ],'Pehle '+K(RT('28')+'=2'+RT('7'))+', fir divide.',K(RT('28'))+' ko '+K('2'+RT('7'))+' banao, fir di gayi value daalo.'),
     L([
       S('चरण 1: मूल सरल करें',K(RT('28')+'=2'+RT('7'))+' क्योंकि '+K('28=4'+T+'7')+'.'),
       S('चरण 2: मान रखें','दिया है '+K(RT('7')+'=2.645')+', अतः '+K(RT('28')+'=2'+T+'2.645=5.29')+'.'),
