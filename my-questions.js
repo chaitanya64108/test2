@@ -6,8 +6,9 @@
    - 'New'     -> alag template (Mix mode me).
    - Engine me khud register hota hai: TEMPLATES + VARIANTS.
    - Poora file IIFE me wrapped (koi global collision nahi).
+   - Solutions/hints ka math KaTeX me render hota hai (_kx): root bar poore number pe, division stacked fraction.
    - sqrt.html me load karo: variants.js ke BAAD, app.js se PEHLE:
-       <script src=\"my-questions.js\"></script>
+       <script src="my-questions.js"></script>
 */
 (function () {
   'use strict';
@@ -32,12 +33,23 @@
   function divSq(n){ var m=pf(n),r=1; for(var p in m){ if(m[p]%2)r*=+p; } return r; }
   function divCb(n){ var m=pf(n),r=1; for(var p in m){ var e=m[p]%3; if(e)r*=Math.pow(+p,e); } return r; }
 
+  // ===== KaTeX-ify solution/hint math (unicode roots & numeric division -> LaTeX) =====
+  var _BS = String.fromCharCode(92);
+  function _kx(s){ if(s==null) return s; s=String(s);
+    s=s.replace(/∛[(]([^)]*)[)]/g, function(m,x){ return '$'+_BS+'sqrt[3]{'+x+'}$'; });
+    s=s.replace(/∛([0-9]+)/g, function(m,x){ return '$'+_BS+'sqrt[3]{'+x+'}$'; });
+    s=s.replace(/√[(]([^)]*)[)]/g, function(m,x){ return '$'+_BS+'sqrt{'+x+'}$'; });
+    s=s.replace(/√([0-9]+)/g, function(m,x){ return '$'+_BS+'sqrt{'+x+'}$'; });
+    s=s.replace(/([0-9]+)[/]([0-9]+)/g, function(m,a,b){ return '$'+_BS+'frac{'+a+'}{'+b+'}$'; });
+    return s;
+  }
+
   function T(en,hing,hi){ return { en:en, hing:hing, hi:hi }; }
-  function rs(n){ return '\u20B9'+n; }
-  function rp(p){ return '\u20B9'+(p/100).toFixed(2); }
+  function rs(n){ return '₹'+n; }
+  function rp(p){ return '₹'+(p/100).toFixed(2); }
   function W(ans,c){ var A=String(ans),s={},o=[]; s[A]=1; c=shuf(c); for(var i=0;i<c.length&&o.length<3;i++){ var v=c[i]; if(Number(v)>0&&!s[String(v)]){s[String(v)]=1;o.push(String(v));} } var e=Number(ans)+1; while(o.length<3){ if(!s[String(e)]){s[String(e)]=1;o.push(String(e));} e++; } return o; }
   function near(a,g){ g=g||[1,2,3,4,5,6,7,8]; var c=[]; for(var i=0;i<g.length;i++){ c.push(a+g[i]); c.push(a-g[i]); } return W(a,c.filter(function(v){return v>0;})); }
-  function sol1(en,hing,hi,hint){ if(typeof makeStyledSolution!=='function'||typeof step!=='function') return null; var mk=function(b){return {steps:[step('Solution',b)],teachersSay:'',mistakes:[],shortcut:'',hint:hint||''};}; try{ return makeStyledSolution({en:mk(en),hing:mk(hing),hi:mk(hi)}); }catch(e){ return null; } }
+  function sol1(en,hing,hi,hint){ if(typeof makeStyledSolution!=='function'||typeof step!=='function') return null; en=_kx(en); hing=_kx(hing); hi=_kx(hi); hint=_kx(hint); var mk=function(b){return {steps:[step('Solution',b)],teachersSay:'',mistakes:[],shortcut:'',hint:hint||''};}; try{ return makeStyledSolution({en:mk(en),hing:mk(hing),hi:mk(hi)}); }catch(e){ return null; } }
   function reg(id,tier,label,themes,mk){ TEMPLATES.push({id:id,tier:tier,label:label,generate:mk(themes[0])}); VARIANTS[id]=(VARIANTS[id]||[]).concat(themes.slice(1).map(mk)); }
 
   var TRIP=[[12,18,30],[8,12,15],[10,12,15],[6,10,15],[20,30,45],[18,24,30],[24,36,54],[12,20,30],[16,24,36],[9,12,15],[8,12,18],[10,15,20],[14,21,35],[4,6,9],[16,20,25],[18,24,32]];
@@ -285,48 +297,4 @@
     return { question:T(q[0],q[1],q[2]), ans:String(v), w:w, solution:null };
   }; }; }
 
-  function gSixth(t){ return function(){ var list=[64,729,4096,15625], v=pick(list); var sq=[16,36,49,81,100,121,144,196,225], cb=[8,27,125,216,343,512,1000]; var s={}, w=[]; s[String(v)]=1; var cand=[pick(sq),pick(cb),pick(cb.concat(sq))]; for(var i=0;i<cand.length;i++){ var c=String(cand[i]); if(!s[c]){s[c]=1;w.push(c);} } var f=2; while(w.length<3){ var x=String(v+f); if(!s[x]){s[x]=1;w.push(x);} f++; }
-    return { question:T(
-      'Which of the following is both a perfect square AND a perfect cube?',
-      'Inme se kaun sa number perfect square bhi hai aur perfect cube bhi?',
-      'निम्न में से कौन सी संख्या पूर्ण वर्ग भी है और पूर्ण घन भी?'),
-      ans:String(v), w:w, solution:null };
-  };}
-
-  // ===== REGISTRATION (33) =====
-  reg('mq_sq_rows','Grad+','Word: Square Rows',[{e:'students',g:'students',h:'विद्यार्थी'},{e:'trees',g:'trees',h:'पेड़'},{e:'soldiers',g:'soldiers',h:'सैनिक'},{e:'chairs',g:'chairs',h:'कुर्सियाँ'},{e:'balls',g:'balls',h:'गेंदें'}],gSide);
-  reg('mq_tree_rows','Grad+','Word: Trees Square Rows',[{e:'trees',g:'trees',h:'पेड़',min:70,max:140},{e:'saplings',g:'saplings',h:'पौधे',min:60,max:95},{e:'plants',g:'plants',h:'पौधे',min:27,max:60},{e:'garden plants',g:'garden plants',h:'बगीचे के पौधे',min:50,max:95},{e:'park trees',g:'park trees',h:'पार्क के पेड़',min:50,max:85}],gSide);
-  reg('mq_sq_left','Grad+','Word: Square Leftover',[{e:'soldiers',g:'soldiers',h:'सैनिक'},{e:'students',g:'students',h:'विद्यार्थी'},{e:'saplings',g:'saplings',h:'पौधे'},{e:'oranges',g:'oranges',h:'संतरे'},{e:'tiles',g:'tiles',h:'टाइलें'}],gLeft);
-  reg('mq_sq_remove','Grad+','Word: Square Remove Least',[{e:'balls',g:'balls',h:'गेंदें'},{e:'students',g:'students',h:'विद्यार्थी'},{e:'trees',g:'trees',h:'पेड़'},{e:'tiles',g:'tiles',h:'टाइलें'},{e:'packets',g:'packets',h:'पैकेट'}],gRem);
-  reg('mq_sq_more','Grad+','Word: Square Extra Needed',[{e:'students',g:'students',h:'विद्यार्थी'},{e:'soldiers',g:'soldiers',h:'सैनिक'},{e:'trees',g:'trees',h:'पेड़'},{e:'tiles',g:'tiles',h:'टाइलें'},{e:'boxes',g:'boxes',h:'डिब्बे'}],gMore);
-  reg('mq_cube_edge','Grad+','Word: Cube Edge Count',[{e:'cubes',g:'cubes',h:'घन'},{e:'boxes',g:'boxes',h:'डिब्बे'},{e:'sugar cubes',g:'sugar cubes',h:'शक्कर के घन'},{e:'bricks',g:'bricks',h:'ईंटें'},{e:'toy blocks',g:'toy blocks',h:'खिलौना ब्लॉक'}],gCEdge);
-  reg('mq_cube_left','Grad+','Word: Cube Leftover',[{e:'cubes',g:'cubes',h:'घन'},{e:'boxes',g:'boxes',h:'डिब्बे'},{e:'bricks',g:'bricks',h:'ईंटें'},{e:'balls',g:'balls',h:'गेंदें'},{e:'cartons',g:'cartons',h:'कार्टन'}],gCLeft);
-  reg('mq_cube_more','Grad+','Word: Cube Extra Needed',[{e:'cubes',g:'cubes',h:'घन'},{e:'boxes',g:'boxes',h:'डिब्बे'},{e:'bricks',g:'bricks',h:'ईंटें'},{e:'packets',g:'packets',h:'पैकेट'},{e:'blocks',g:'blocks',h:'ब्लॉक'}],gCMore);
-  reg('mq_uproot','Grad+','Word: Uprooted Trees Rows',[{e:'trees',g:'trees',h:'पेड़',ae:'trees were uprooted in a storm',ag:'trees toofan me ukhad gaye',ah:'पेड़ तूफ़ान में उखड़ गए'},{e:'trees',g:'trees',h:'पेड़',ae:'trees were removed for renovation',ag:'trees renovation me hata diye gaye',ah:'पेड़ नवीनीकरण में हटा दिए गए'},{e:'trees',g:'trees',h:'पेड़',ae:'trees were destroyed by animals',ag:'trees jaanwaron ne nasht kar diye',ah:'पेड़ जानवरों ने नष्ट कर दिए'},{e:'trees',g:'trees',h:'पेड़',ae:'trees were cut down',ag:'trees kaat diye gaye',ah:'पेड़ काट दिए गए'},{e:'trees',g:'trees',h:'पेड़',ae:'trees were damaged',ag:'trees kshatigrast ho gaye',ah:'पेड़ क्षतिग्रस्त हो गए'}],gUproot);
-  reg('mq_area','Grad+','Word: Area to Side',[{e:'field',g:'field',h:'मैदान'},{e:'garden',g:'garden',h:'बगीचा'},{e:'plot',g:'plot',h:'प्लॉट'},{e:'playground',g:'playground',h:'खेल मैदान'},{e:'farmland',g:'farmland',h:'खेत'}],gArea);
-  reg('mq_fence','Grad+','Word: Fencing to Area',[{e:'field',g:'field',h:'मैदान'},{e:'plot',g:'plot',h:'प्लॉट'},{e:'garden',g:'garden',h:'बगीचा'},{e:'lawn',g:'lawn',h:'लॉन'},{e:'park',g:'park',h:'पार्क'}],gFence);
-  reg('mq_path_out','Grad+','Word: Path Around Square',[{e:'field',g:'field',h:'मैदान'},{e:'garden',g:'garden',h:'बगीचा'},{e:'lawn',g:'lawn',h:'लॉन'},{e:'park',g:'park',h:'पार्क'},{e:'courtyard',g:'courtyard',h:'आँगन'}],gPathO);
-  reg('mq_path_in','Grad+','Word: Path Inside Square',[{e:'garden',g:'garden',h:'बगीचा'},{e:'park',g:'park',h:'पार्क'},{e:'plot',g:'plot',h:'प्लॉट'},{e:'lawn',g:'lawn',h:'लॉन'},{e:'courtyard',g:'courtyard',h:'आँगन'}],gPathI);
-  reg('mq_tiles_total','Grad+','Word: Tiles Count',[{e:'floor',g:'floor',h:'फर्श'},{e:'hall',g:'hall',h:'हॉल'},{e:'bathroom',g:'bathroom',h:'बाथरूम'},{e:'classroom',g:'classroom',h:'कक्षा'},{e:'courtyard',g:'courtyard',h:'आँगन'}],gTilesT);
-  reg('mq_tiles_side','Grad+','Word: Tiles Along Side',[{e:'floor',g:'floor',h:'फर्श'},{e:'hall',g:'hall',h:'हॉल'},{e:'courtyard',g:'courtyard',h:'आँगन'},{e:'room',g:'room',h:'कमरा'},{e:'classroom',g:'classroom',h:'कक्षा'}],gTilesS);
-  reg('mq_tile_cost','Grad+','Word: Tiling Cost',[{e:'floor',g:'floor',h:'फर्श',we:'Tiling',wg:'Tiling',wh:'टाइलिंग'},{e:'hall',g:'hall',h:'हॉल',we:'Marble flooring',wg:'Marble flooring',wh:'मार्बल फर्श'},{e:'room',g:'room',h:'कमरा',we:'Carpeting',wg:'Carpeting',wh:'कारपेट'},{e:'floor',g:'floor',h:'फर्श',we:'Painting',wg:'Painting',wh:'पेंटिंग'},{e:'courtyard',g:'courtyard',h:'आँगन',we:'Paving',wg:'Paving',wh:'पेविंग'}],gTileCost);
-  reg('mq_paise','Grad+','Word: Paise Collection',[{e:'group',g:'group',h:'समूह'},{e:'class',g:'class',h:'कक्षा'},{e:'club',g:'club',h:'क्लब'},{e:'charity fund',g:'charity fund',h:'चैरिटी फंड'},{e:'class fund',g:'class fund',h:'कक्षा फंड'}],gPaise);
-  reg('mq_equal','Grad+','Word: Equal Contribution',[{e:'persons',g:'persons',h:'व्यक्ति'},{e:'donors',g:'donors',h:'दानकर्ता'},{e:'members',g:'members',h:'सदस्य'},{e:'employees',g:'employees',h:'कर्मचारी'},{e:'people',g:'people',h:'लोग'}],gEqual);
-  reg('mq_cube_collect','Grad+','Word: Cube Collection',[{e:'collection drive',g:'collection drive',h:'संग्रह अभियान'},{e:'class system',g:'class system',h:'कक्षा प्रणाली'},{e:'team setup',g:'team setup',h:'टीम व्यवस्था'},{e:'club',g:'club',h:'क्लब'},{e:'packing system',g:'packing system',h:'पैकिंग व्यवस्था'}],gCubeCol);
-  reg('mq_sq_check','Grad+','Word: Perfect Square Check',[{e:'cricket match',g:'cricket match',h:'क्रिकेट मैच',ue:'runs',ug:'runs',uh:'रन'},{e:'football match',g:'football match',h:'फुटबॉल मैच',ue:'goals',ug:'goals',uh:'गोल'},{e:'charity event',g:'charity event',h:'चैरिटी इवेंट',ue:'points',ug:'points',uh:'अंक'},{e:'company reward',g:'company reward',h:'कंपनी इनाम',ue:'runs',ug:'runs',uh:'रन'},{e:'school event',g:'school event',h:'स्कूल इवेंट',ue:'tickets',ug:'tickets',uh:'टिकट'}],gSqChk);
-  reg('mq_distrib','Grad+','Word: Distribution k.n^2',[{e:'oranges',g:'oranges',h:'संतरे',we:'girls',wg:'girls',wh:'लड़कियाँ'},{e:'sweets',g:'sweets',h:'मिठाइयाँ',we:'children',wg:'children',wh:'बच्चे'},{e:'books',g:'books',h:'किताबें',we:'students',wg:'students',wh:'विद्यार्थी'},{e:'chocolates',g:'chocolates',h:'चॉकलेट',we:'children',wg:'children',wh:'बच्चे'},{e:'pens',g:'pens',h:'पेन',we:'students',wg:'students',wh:'विद्यार्थी'}],gDist);
-  reg('mq_least_sq','12th+','Least Square divisible by many',[{s:null},{s:{e:'packets',g:'packets',h:'पैकेट'}},{s:null},{s:{e:'boxes',g:'boxes',h:'डिब्बे'}},{s:{e:'tiles',g:'tiles',h:'टाइलें'}}],gLeastSq);
-  reg('mq_least_cb','12th+','Least Cube divisible by many',[{s:null},{s:{e:'boxes',g:'boxes',h:'डिब्बे'}},{s:null},{s:{e:'packets',g:'packets',h:'पैकेट'}},{s:{e:'bricks',g:'bricks',h:'ईंटें'}}],gLeastCb);
-  reg('mq_mul_sq','12th+','Multiplier to Square',[{},{},{},{},{}],gMulSq);
-  reg('mq_mul_cb','12th+','Multiplier to Cube',[{},{},{},{},{}],gMulCb);
-  reg('mq_div_sq','10th+','Divide to Square',[{},{},{},{},{}],gDivSq);
-  reg('mq_div_cb','12th+','Divide to Cube',[{},{},{},{},{}],gDivCb);
-  reg('mq_mulN_cb','12th+','Multiply to Cube',[{},{},{},{},{}],gMulCbN);
-  reg('mq_add_cube','Grad+','Add to Next Cube',[{e:'bricks',g:'bricks',h:'ईंटें'},{e:'cubes',g:'cubes',h:'घन'},{e:'packets',g:'packets',h:'पैकेट'},{e:'items',g:'items',h:'वस्तुएँ'},{e:'blocks',g:'blocks',h:'ब्लॉक'}],gAddCb);
-  reg('mq_sub_cube','Grad+','Subtract to Prev Cube',[{e:'packets',g:'packets',h:'पैकेट'},{e:'boxes',g:'boxes',h:'डिब्बे'},{e:'blocks',g:'blocks',h:'ब्लॉक'},{e:'items',g:'items',h:'वस्तुएँ'},{e:'cartons',g:'cartons',h:'कार्टन'}],gSubCb);
-  reg('mq_ndigit_cube','12th+','Largest n-digit Cube',[{mode:'large'},{mode:'root'},{mode:'small'},{mode:'large',ds:[5]},{mode:'small',ds:[4]}],ndig(true));
-  reg('mq_ndigit_sq','10th+','Largest n-digit Square',[{mode:'large'},{mode:'root'},{mode:'small'},{mode:'large',ds:[5]},{mode:'small',ds:[3]}],ndig(false));
-  reg('mq_sixth','12th+','Sixth Power (square & cube)',[{},{},{},{},{}],gSixth);
-
-  try { console.log('[my-questions] Registered. TEMPLATES total =', TEMPLATES.length); } catch (e) {}
-})();
+  function gSixth(t){ return function(){ var list=[64,729,4096,15625], v=pick(list); var sq=[16,36,49,81,100,121,144,196,225], cb=[8,27,125,216,343,512,1000]; var s={}, w=[]; s[String(v)]=1; var cand=[pick(sq),pick(cb),pick(cb.concat(sq))]; for(var i=0;i<cand.length;i++){ var c=String(cand[i]); if(!s[c]){s[c]=
