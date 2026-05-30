@@ -1,51 +1,40 @@
-/* tier_grad batch1 — nested_sq, double_nested, inf_nested (base+variants) */
+/* tier_grad batch1 — nested_sq(73), double_nested(74) base+variants */
 (function(){
   var H=window.QT; if(!H) return;
-  var K=H.K,RT=H.RT,POW=H.POW,B=H.B,tri=H.tri;
+  var K=H.K,RT=H.RT,tri=H.tri;
 
-  /* 73. Nested Square Root: sqrt(N + 2 sqrt(M)) = r + sqrt(s) */
+  /* 73. Nested Square Root: sqrt(m+n+2sqrt(mn)) = sqrt(m)+sqrt(n) */
   H.base('nested_sq', function(){
-    var r=rint(2,5); var s=pick([2,3,5,6,7,10]);
-    var N=r*r+s, M=r*r*s;
-    var q=K(RT(N+' + 2'+RT(M)));
-    var ans=K(r+' + '+RT(s));
-    var w=[K(r+' - '+RT(s)),K((r+1)+' + '+RT(s)),K(RT(r)+' + '+RT(s))];
+    var pool=[2,3,5,6,7,10,11,13];
+    var m=pick(pool), n=pick(pool); while(n===m) n=pick(pool);
+    var S=m+n, P=m*n;
+    var q=K(RT(S+' + 2'+RT(P)));
     return {question:tri(
-      'A number is written as the nested radical '+q+'. Rewrite it in the simpler form a + √b. What is its value?',
-      'Ek number nested radical '+q+' ki tarah likha hai. Ise simple form a + √b me likho. Iski value kya hai?',
-      'एक संख्या नेस्टेड रेडिकल '+q+' के रूप में लिखी है। इसे सरल रूप a + √b में लिखिए। इसका मान क्या है?'
-    ),ans:ans,w:w};
+      'Simplify the nested square root '+q+'. Method: rewrite the inside as a perfect square, since m + n + 2√(mn) = (√m + √n)². So the answer is √m + √n.',
+      'Is nested square root ko simplify karo: '+q+'. Tarika: andar wale ko perfect square ki tarah likho, kyunki m + n + 2√(mn) = (√m + √n)². Toh answer hai √m + √n.',
+      'इस nested square root को सरल कीजिए: '+q+'। विधि: अंदर वाले को पूर्ण वर्ग के रूप में लिखें, क्योंकि m + n + 2√(mn) = (√m + √n)²। अतः उत्तर है √m + √n।'
+    ),ans:K(RT(m)+' + '+RT(n)),w:[K(RT(S)),K(RT(m)+' - '+RT(n)),K(RT(P))]};
   });
   H.vars('nested_sq',[
-    function(){ var r=rint(3,6); var s=pick([2,3,5,6,7]); var N=r*r+s,M=r*r*s; var q=K(RT(N+' - 2'+RT(M))); return {question:tri('Simplify the nested radical '+q+' into the form a − √b. What is its value?','Is nested radical '+q+' ko a − √b form me simplify karo. Value kya hai?','इस नेस्टेड रेडिकल '+q+' को a − √b रूप में सरल कीजिए। इसका मान क्या है?'),ans:K(r+' - '+RT(s)),w:[K(r+' + '+RT(s)),K((r-1)+' - '+RT(s)),K(RT(r)+' - '+RT(s))]}; },
-    function(){ var u=rint(2,5),v=rint(2,5); while(v===u)v=rint(2,5); var p=u*u,qq=v*v; var N=p+qq,M=p*qq; var q=K(RT(N+' + 2'+RT(M))); var a=u+v; return {question:tri('Here both inner parts are perfect squares. Find the exact value of '+q+'.','Yahan andar dono parts perfect square hain. '+q+' ki exact value nikaalo.','यहाँ भीतर दोनों भाग पूर्ण वर्ग हैं। '+q+' का सही मान ज्ञात कीजिए।'),ans:String(a),w:[String(a+1),String(a-1),String(N)]}; }
+    function(){ var pool=[2,3,5,6,7,10,11,13]; var m=pick(pool),n=pick(pool); while(n===m)n=pick(pool); if(m<n){var t=m;m=n;n=t;} var S=m+n,P=m*n; var q=K(RT(S+' - 2'+RT(P))); return {question:tri('Simplify '+q+'. Here m + n − 2√(mn) = (√m − √n)² with m > n, so the answer is √m − √n.','Simplify karo '+q+'. Yahan m + n − 2√(mn) = (√m − √n)² jahan m > n, toh answer hai √m − √n.','सरल कीजिए '+q+'। यहाँ m + n − 2√(mn) = (√m − √n)², जहाँ m > n, अतः उत्तर है √m − √n।'),ans:K(RT(m)+' - '+RT(n)),w:[K(RT(n)+' - '+RT(m)),K(RT(S)),K(RT(m)+' + '+RT(n))]}; },
+    function(){ var sq=pick([4,9,16,25]); var ns=pick([2,3,5,6,7,10,11]); var S=sq+ns,P=sq*ns; var rm=Math.sqrt(sq); var q=K(RT(S+' + 2'+RT(P))); return {question:tri('Simplify '+q+' and give the answer in simplest form (one term becomes a whole number).','Simplify karo '+q+' aur answer simplest form me do (ek term whole number ban jaata hai).','सरल कीजिए '+q+' और उत्तर सरलतम रूप में दीजिए (एक पद पूर्ण संख्या बन जाता है)।'),ans:K(rm+' + '+RT(ns)),w:[K(rm+' + '+RT(P)),K((rm+1)+' + '+RT(ns)),K(rm+' - '+RT(ns))]}; },
+    function(){ var pool=[2,3,5,6,7,10]; var a=pick(pool),b=pick(pool); while(b===a)b=pick(pool); var sum=a+b,prod=a*b; var q=K('('+RT(a)+' + '+RT(b)+')^{2}'); return {question:tri('Expand '+q+' and write it in the form p + q√r.','Expand karo '+q+' aur ise p + q√r form me likho.','विस्तार कीजिए '+q+' और इसे p + q√r रूप में लिखिए।'),ans:K(sum+' + 2'+RT(prod)),w:[K(sum+' + '+RT(prod)),K(sum+' - 2'+RT(prod)),K((a+b)+' + 2'+RT(a+b))]}; }
   ]);
 
-  /* 74. Double Nested Root: sqrt(k sqrt(k sqrt(k^2))) = k */
+  /* 74. Double Nested Root: sqrt(a+2sqrt(b))+sqrt(a-2sqrt(b)) = 2sqrt(m), a=m+n b=mn m>n */
   H.base('double_nested', function(){
-    var k=rint(3,9);
-    var q=K(RT(k+RT(k+RT(POW(k,2)))));
+    var bigs=[5,6,7,10,12,13], smalls=[2,3,4];
+    var m=pick(bigs), n=pick(smalls);
+    var a=m+n, b=m*n;
+    var q1=K(RT(a+' + 2'+RT(b))), q2=K(RT(a+' - 2'+RT(b)));
     return {question:tri(
-      'Evaluate the double nested root '+q+'. Tip: start from the innermost root and work outward.',
-      'Is double nested root '+q+' ko solve karo. Tip: sabse andar wale root se shuru karke bahar ki taraf badho.',
-      'इस दोहरे नेस्टेड रूट '+q+' का मान निकालिए। संकेत: सबसे भीतरी रूट से शुरू करके बाहर की ओर बढ़ें।'
-    ),ans:String(k),w:[String(k*k),String(k*2),String(k+1)]};
+      'Find the value of '+q1+' + '+q2+'. Method: each part is a perfect-square surd — a + 2√b = (√m + √n)² and a − 2√b = (√m − √n)². Adding them, the √n cancels and you get 2√m.',
+      'Value nikaalo: '+q1+' + '+q2+'. Tarika: dono part perfect-square surd hain — a + 2√b = (√m + √n)² aur a − 2√b = (√m − √n)². Jodne par √n cancel ho jaata hai aur milta hai 2√m.',
+      'मान ज्ञात कीजिए: '+q1+' + '+q2+'। विधि: दोनों भाग पूर्ण-वर्ग करणी हैं — a + 2√b = (√m + √n)² और a − 2√b = (√m − √n)²। जोड़ने पर √n कट जाता है और मिलता है 2√m।'
+    ),ans:K('2'+RT(m)),w:[K('2'+RT(n)),K(RT(m)+' + '+RT(n)),K('2'+RT(a))]};
   });
   H.vars('double_nested',[
-    function(){ var P=pick([[2,64,4],[8,4,4],[3,9,3],[5,25,5],[6,36,6],[8,64,8]]); var q=K(RT(P[0]+RT(P[1]))); return {question:tri('Evaluate the nested root '+q+'. Simplify the inner root first, then multiply.','Is nested root '+q+' ko solve karo. Pehle andar wala root, phir multiply.','इस नेस्टेड रूट '+q+' का मान निकालिए। पहले भीतरी रूट हल करें, फिर गुणा करें।'),ans:String(P[2]),w:[String(P[2]+2),String(P[2]*2),String(P[1])]}; }
-  ]);
-
-  /* 75. Infinite Nested Radical: sqrt(a + sqrt(a + ...)) = n, a=n(n-1) */
-  H.base('inf_nested', function(){
-    var n=rint(3,7); var a=n*(n-1);
-    var q=K(RT(a+' + '+RT(a+' + '+RT(a+' + '+B+'cdots'))));
-    return {question:tri(
-      'Find the value of the infinite nested radical '+q+' (it continues forever).',
-      'Is infinite nested radical '+q+' ki value nikaalo (yeh hamesha chalta rehta hai).',
-      'इस अनंत नेस्टेड रेडिकल '+q+' का मान ज्ञात कीजिए (यह हमेशा चलता रहता है)।'
-    ),ans:String(n),w:[String(n+1),String(n-1),String(a)]};
-  });
-  H.vars('inf_nested',[
-    function(){ var a=rint(2,9); var q=K(RT(a+RT(a+RT(a+B+'cdots')))); return {question:tri('Find the value of the infinite product radical '+q+'.','Is infinite product radical '+q+' ki value nikaalo.','इस अनंत गुणनफल रेडिकल '+q+' का मान ज्ञात कीजिए।'),ans:String(a),w:[String(a*a),String(a+1),String(a-1>1?a-1:a+2)]}; }
+    function(){ var bigs=[5,6,7,10,12,13],smalls=[2,3]; var m=pick(bigs),n=pick(smalls); var a=m+n,b=m*n; var q1=K(RT(a+' + 2'+RT(b))),q2=K(RT(a+' - 2'+RT(b))); return {question:tri('Find the value of '+q1+' − '+q2+'. (Subtracting, the √m cancels and you get 2√n.)','Value nikaalo: '+q1+' − '+q2+'. (Ghatane par √m cancel hota hai aur milta hai 2√n.)','मान ज्ञात कीजिए: '+q1+' − '+q2+'। (घटाने पर √m कट जाता है और मिलता है 2√n।)'),ans:K('2'+RT(n)),w:[K('2'+RT(m)),K(RT(m)+' - '+RT(n)),K('2'+RT(a))]}; },
+    function(){ var bigs=[5,6,7,10,11,13],smalls=[2,3]; var m=pick(bigs),n=pick(smalls); var a=m+n,b=m*n; var q=K(RT(a+' + 2'+RT(b))); return {question:tri('Simplify the nested radical '+q+' (write as √m + √n).','Is nested radical ko simplify karo: '+q+' (√m + √n ki tarah likho).','इस nested radical को सरल कीजिए: '+q+' (√m + √n के रूप में लिखें)।'),ans:K(RT(m)+' + '+RT(n)),w:[K('2'+RT(m)),K(RT(a)),K(RT(m)+' - '+RT(n))]}; }
   ]);
 })();
