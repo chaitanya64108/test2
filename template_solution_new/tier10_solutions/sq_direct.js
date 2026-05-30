@@ -22,11 +22,11 @@
         step('Step 4 - Final answer','<br>'+K(RT(sq)+' = '+r)+'.')
       ], shortcut:K('('+r+T+r+') = '+sq)+' yaad rakho, toh '+K(RT(sq)+' = '+r)+' turant.', hint:'Socho: kaunsa number khud se guna karke '+K(sq)+' deta hai?' },
       { steps:[
-        step('Step 1 - Samjho kya poocha gaya','<br>Humein '+K(RT(sq))+' nikaalna hai. Vargmool ka arth: <b>woh sankhya jo svayam se guna hoke '+K(sq)+' banti hai</b>.'),
-        step('Step 2 - Niyam yaad karo','<br>Aisi sankhya $n$ khojo jisme '+K(POW('n','2')+' = ('+'n'+T+'n) = '+sq)+'.'),
-        step('Step 3 - Woh sankhya khojo','<br>Kyunki '+K('('+r+T+r+') = '+sq)+', woh sankhya '+K(r)+' hai.'),
-        step('Step 4 - Antim uttar','<br>'+K(RT(sq)+' = '+r)+'.')
-      ], shortcut:K('('+r+T+r+') = '+sq)+' yaad rakho, to '+K(RT(sq)+' = '+r)+' turant.', hint:'Socho: kaunsi sankhya svayam se guna karke '+K(sq)+' deti hai?' }
+        step('चरण 1 - प्रश्न समझो','<br>हमें '+K(RT(sq))+' निकालना है। वर्गमूल का अर्थ: <b>वह संख्या जो स्वयं से गुणा होकर '+K(sq)+' बनती है</b>।'),
+        step('चरण 2 - नियम याद करो','<br>ऐसी संख्या $n$ खोजो जिसमें '+K(POW('n','2')+' = ('+'n'+T+'n) = '+sq)+'।'),
+        step('चरण 3 - वह संख्या खोजो','<br>क्योंकि '+K('('+r+T+r+') = '+sq)+', वह संख्या '+K(r)+' है।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(RT(sq)+' = '+r)+'।')
+      ], shortcut:K('('+r+T+r+') = '+sq)+' याद रखो, तो '+K(RT(sq)+' = '+r)+' तुरंत।', hint:'सोचो: कौन-सी संख्या स्वयं से गुणा करके '+K(sq)+' देती है?' }
     );
   };
 
@@ -46,11 +46,11 @@
         step('Step 4 - Final answer','<br>'+K('x = '+ans)+'.')
       ], shortcut:'Diye gaye root ko square karo: '+K('x = '+POW(r,'2')+' = '+ans)+'.', hint:'Agar '+K(RT('x')+' = '+r)+', toh '+K('x = '+POW(r,'2'))+'.' },
       { steps:[
-        step('Step 1 - Samjho kya poocha gaya','<br>Diya hai '+K(RT('x')+' = '+r)+'. Humein '+K('x')+' nikaalna hai.'),
-        step('Step 2 - Vargmool ka ulta lagao','<br>Agar '+K(RT('x')+' = '+r)+', to dono or varg karne par '+K('x = '+POW(r,'2'))+'.'),
-        step('Step 3 - Ganana karo','<br>'+K('x = ('+r+T+r+') = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K('x = '+ans)+'.')
-      ], shortcut:'Diye gaye mool ko varg karo: '+K('x = '+POW(r,'2')+' = '+ans)+'.', hint:'Agar '+K(RT('x')+' = '+r)+', to '+K('x = '+POW(r,'2'))+'.' }
+        step('चरण 1 - प्रश्न समझो','<br>दिया है '+K(RT('x')+' = '+r)+'। हमें '+K('x')+' निकालना है।'),
+        step('चरण 2 - वर्गमूल का उल्टा लगाओ','<br>अगर '+K(RT('x')+' = '+r)+', तो दोनों ओर वर्ग करने पर '+K('x = '+POW(r,'2'))+'।'),
+        step('चरण 3 - गणना करो','<br>'+K('x = ('+r+T+r+') = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K('x = '+ans)+'।')
+      ], shortcut:'दिए गए मूल को वर्ग करो: '+K('x = '+POW(r,'2')+' = '+ans)+'।', hint:'अगर '+K(RT('x')+' = '+r)+', तो '+K('x = '+POW(r,'2'))+'।' }
     );
   };
 
@@ -71,11 +71,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:K(RT(aa)+' + '+RT(bb)+' = '+a+' + '+b+' = '+ans)+'.', hint:'Pehle har square root nikaalo, phir jodo: '+K(RT(aa)+' = '+a)+'.' },
       { steps:[
-        step('Step 1 - Samjho kya poocha gaya','<br>Humein '+K(RT(aa)+' + '+RT(bb))+' nikaalna hai.'),
-        step('Step 2 - Har mool hal karo','<br>'+K(RT(aa)+' = '+a)+' aur '+K(RT(bb)+' = '+b)+'.<br><i>Tip: poorn varg ka vargmool uska aadhaar number hi hota hai.</i>'),
-        step('Step 3 - Dono ko jodo','<br>'+K('('+a+') + ('+b+') = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:K(RT(aa)+' + '+RT(bb)+' = '+a+' + '+b+' = '+ans)+'.', hint:'Pehle har vargmool nikaalo, phir jodo: '+K(RT(aa)+' = '+a)+'.' }
+        step('चरण 1 - प्रश्न समझो','<br>हमें '+K(RT(aa)+' + '+RT(bb))+' निकालना है।'),
+        step('चरण 2 - हर मूल हल करो','<br>'+K(RT(aa)+' = '+a)+' और '+K(RT(bb)+' = '+b)+'।<br><i>सुझाव: पूर्ण वर्ग का वर्गमूल उसका आधार संख्या ही होता है।</i>'),
+        step('चरण 3 - दोनों को जोड़ो','<br>'+K('('+a+') + ('+b+') = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:K(RT(aa)+' + '+RT(bb)+' = '+a+' + '+b+' = '+ans)+'।', hint:'पहले हर वर्गमूल निकालो, फिर जोड़ो: '+K(RT(aa)+' = '+a)+'।' }
     );
   };
 
@@ -95,11 +95,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:'Number hai '+K(POW(r,'2')+' = '+ans)+'.', hint:'Square karna square root ka ulta hai: number = '+K(POW(r,'2'))+'.' },
       { steps:[
-        step('Step 1 - Samjho kya poocha gaya','<br>Humein woh sankhya chahiye jiska vargmool '+K(r)+' hai.'),
-        step('Step 2 - Vargmool ka ulta lagao','<br>Agar '+K(RT('?')+' = '+r)+', to sankhya '+K('? = '+POW(r,'2'))+' hai.'),
-        step('Step 3 - Ganana karo','<br>'+K('? = ('+r+T+r+') = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:'Sankhya hai '+K(POW(r,'2')+' = '+ans)+'.', hint:'Varg karna vargmool ka ulta hai: sankhya = '+K(POW(r,'2'))+'.' }
+        step('चरण 1 - प्रश्न समझो','<br>हमें वह संख्या चाहिए जिसका वर्गमूल '+K(r)+' है।'),
+        step('चरण 2 - वर्गमूल का उल्टा लगाओ','<br>अगर '+K(RT('?')+' = '+r)+', तो संख्या '+K('? = '+POW(r,'2'))+' है।'),
+        step('चरण 3 - गणना करो','<br>'+K('? = ('+r+T+r+') = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:'संख्या है '+K(POW(r,'2')+' = '+ans)+'।', hint:'वर्ग करना वर्गमूल का उल्टा है: संख्या = '+K(POW(r,'2'))+'।' }
     );
   };
 
@@ -120,11 +120,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:K(RT(aa)+' - '+RT(bb)+' = '+a+' - '+b+' = '+ans)+'.', hint:'Pehle har square root nikaalo, phir ghatao: '+K(RT(aa)+' = '+a)+'.' },
       { steps:[
-        step('Step 1 - Samjho kya poocha gaya','<br>Humein '+K(RT(aa)+' - '+RT(bb))+' nikaalna hai.'),
-        step('Step 2 - Har mool hal karo','<br>'+K(RT(aa)+' = '+a)+' aur '+K(RT(bb)+' = '+b)+'.'),
-        step('Step 3 - Ghatao','<br>'+K('('+a+') - ('+b+') = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:K(RT(aa)+' - '+RT(bb)+' = '+a+' - '+b+' = '+ans)+'.', hint:'Pehle har vargmool nikaalo, phir ghatao: '+K(RT(aa)+' = '+a)+'.' }
+        step('चरण 1 - प्रश्न समझो','<br>हमें '+K(RT(aa)+' - '+RT(bb))+' निकालना है।'),
+        step('चरण 2 - हर मूल हल करो','<br>'+K(RT(aa)+' = '+a)+' और '+K(RT(bb)+' = '+b)+'।'),
+        step('चरण 3 - घटाओ','<br>'+K('('+a+') - ('+b+') = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:K(RT(aa)+' - '+RT(bb)+' = '+a+' - '+b+' = '+ans)+'।', hint:'पहले हर वर्गमूल निकालो, फिर घटाओ: '+K(RT(aa)+' = '+a)+'।' }
     );
   };
 
@@ -144,11 +144,11 @@
         step('Step 4 - Final answer','<br>'+K('n = '+r)+'.')
       ], shortcut:K('n = '+RT(sq)+' = '+r)+'.', hint:'Square hatane ke liye square root lo: '+K('n = '+RT(sq))+'.' },
       { steps:[
-        step('Step 1 - Samjho kya poocha gaya','<br>Diya hai '+K(POW('n','2')+' = '+sq)+'. Humein '+K('n')+' ka dhanatmak maan nikaalna hai.'),
-        step('Step 2 - Vargmool lo','<br>'+K('n = '+RT(sq))+'.'),
-        step('Step 3 - Sankhya khojo','<br>Kyunki '+K('('+r+T+r+') = '+sq)+', '+K('n = '+r)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K('n = '+r)+'.')
-      ], shortcut:K('n = '+RT(sq)+' = '+r)+'.', hint:'Varg hatane ke liye vargmool lo: '+K('n = '+RT(sq))+'.' }
+        step('चरण 1 - प्रश्न समझो','<br>दिया है '+K(POW('n','2')+' = '+sq)+'। हमें '+K('n')+' का धनात्मक मान निकालना है।'),
+        step('चरण 2 - वर्गमूल लो','<br>'+K('n = '+RT(sq))+'।'),
+        step('चरण 3 - संख्या खोजो','<br>क्योंकि '+K('('+r+T+r+') = '+sq)+', '+K('n = '+r)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K('n = '+r)+'।')
+      ], shortcut:K('n = '+RT(sq)+' = '+r)+'।', hint:'वर्ग हटाने के लिए वर्गमूल लो: '+K('n = '+RT(sq))+'।' }
     );
   };
 })();

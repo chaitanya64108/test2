@@ -24,12 +24,12 @@
         step('Step 5 - Final answer','<br>'+K(RT(sq)+' = '+r)+'.')
       ], shortcut:'Same primes ki pair banao, har pair se ek lo, multiply karo: '+K(RT(sq)+' = '+r)+'.', hint:K(sq)+' ko primes me todo, phir pair banao.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(sq))+' ko abhajya gunankhand vidhi se nikaalna hai (yaani '+K(sq)+' ko chhote abhajya tukdo me todna).'),
-        step('Step 2 - Abhajya me todo','<br>'+K(sq+' = '+ch)+'.'),
-        step('Step 3 - Saman jode banao','<br>'+K(sq+' = '+pv)+'.<br>Saman abhajya ko do-do me group karo.'),
-        step('Step 4 - Har jode se ek lo','<br>'+K(RT(sq)+' = '+oneTex)+'.'),
-        step('Step 5 - Antim uttar','<br>'+K(RT(sq)+' = '+r)+'.')
-      ], shortcut:'Saman abhajya ke jode banao, har jode se ek lo, guna karo: '+K(RT(sq)+' = '+r)+'.', hint:K(sq)+' ko abhajya me todo, phir jode banao.' }
+        step('चरण 1 - समझो','<br>'+K(RT(sq))+' को अभाज्य गुणनखंड विधि से निकालना है (यानी '+K(sq)+' को छोटे अभाज्य टुकड़ों में तोड़ना)।'),
+        step('चरण 2 - अभाज्य में तोड़ो','<br>'+K(sq+' = '+ch)+'।'),
+        step('चरण 3 - समान जोड़े बनाओ','<br>'+K(sq+' = '+pv)+'।<br>समान अभाज्य को दो-दो में समूह करो।'),
+        step('चरण 4 - हर जोड़े से एक लो','<br>'+K(RT(sq)+' = '+oneTex)+'।'),
+        step('चरण 5 - अंतिम उत्तर','<br>'+K(RT(sq)+' = '+r)+'।')
+      ], shortcut:'समान अभाज्य के जोड़े बनाओ, हर जोड़े से एक लो, गुणा करो: '+K(RT(sq)+' = '+r)+'।', hint:K(sq)+' को अभाज्य में तोड़ो, फिर जोड़े बनाओ।' }
     );
   };
 
@@ -53,13 +53,13 @@
         step('Step 6 - Final answer','<br>'+K(p)+'.')
       ], shortcut:'Akela prime '+K(p)+' hai, isliye '+K(p)+' se multiply karo.', hint:'Perfect square me har prime pair me hona chahiye.' },
       { steps:[
-        step('Step 1 - Samjho','<br>Diya hai '+K(num+' = '+POW(p,'3'))+'. Ise sabse chhoti sankhya se guna karke poorn varg banana hai.'),
-        step('Step 2 - Abhajya likho','<br>'+K(num+' = '+p+T+p+T+p)+'.'),
-        step('Step 3 - Jode banao','<br>'+K(num+' = ('+p+T+p+')'+T+p)+'.<br>Ek '+K(p)+' akela bacha.'),
-        step('Step 4 - Joda poora karo','<br>'+K(p)+' se guna karo taaki akele '+K(p)+' ko bhi saathi mil jaaye.'),
-        step('Step 5 - Janch karo','<br>'+K(num+T+p+' = '+(num*p)+' = '+sq2)+', poorn varg.'),
-        step('Step 6 - Antim uttar','<br>'+K(p)+'.')
-      ], shortcut:'Akela abhajya '+K(p)+' hai, isliye '+K(p)+' se guna karo.', hint:'Poorn varg me har abhajya jode me hona chahiye.' }
+        step('चरण 1 - समझो','<br>दिया है '+K(num+' = '+POW(p,'3'))+'। इसे सबसे छोटी संख्या से गुणा करके पूर्ण वर्ग बनाना है।'),
+        step('चरण 2 - अभाज्य लिखो','<br>'+K(num+' = '+p+T+p+T+p)+'।'),
+        step('चरण 3 - जोड़े बनाओ','<br>'+K(num+' = ('+p+T+p+')'+T+p)+'।<br>एक '+K(p)+' अकेला बचा।'),
+        step('चरण 4 - जोड़ा पूरा करो','<br>'+K(p)+' से गुणा करो ताकि अकेले '+K(p)+' को भी साथी मिल जाए।'),
+        step('चरण 5 - जाँच करो','<br>'+K(num+T+p+' = '+(num*p)+' = '+sq2)+', पूर्ण वर्ग।'),
+        step('चरण 6 - अंतिम उत्तर','<br>'+K(p)+'।')
+      ], shortcut:'अकेला अभाज्य '+K(p)+' है, इसलिए '+K(p)+' से गुणा करो।', hint:'पूर्ण वर्ग में हर अभाज्य जोड़े में होना चाहिए।' }
     );
   };
 
@@ -79,11 +79,11 @@
         step('Step 4 - Square root bahar nikaalo','<br>'+K(RT(POW(a,'2'))+' = '+a)+', toh '+K(RT(n)+' = '+a+RT(b))+'.')
       ], shortcut:'Perfect square bahar nikaalo: '+K(RT(n)+' = '+a+RT(b))+'.', hint:K(n)+' ko divide karne wala sabse bada perfect square dhoondo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(n))+' ko saraltam karni roop me likhna hai.'),
-        step('Step 2 - Poorn-varg gunankhand dhoondo','<br>'+K(n+' = '+POW(a,'2')+T+b)+'  (yahan '+K(POW(a,'2')+' = '+aa)+' poorn varg hai).'),
-        step('Step 3 - Mool ko todo','<br>'+K(RT(n)+' = '+RT(POW(a,'2'))+T+RT(b))+'.'),
-        step('Step 4 - Vargmool bahar nikaalo','<br>'+K(RT(POW(a,'2'))+' = '+a)+', to '+K(RT(n)+' = '+a+RT(b))+'.')
-      ], shortcut:'Poorn varg bahar nikaalo: '+K(RT(n)+' = '+a+RT(b))+'.', hint:K(n)+' ko vibhajit karne wala sabse bada poorn varg dhoondo.' }
+        step('चरण 1 - समझो','<br>'+K(RT(n))+' को सरलतम करणी रूप में लिखना है।'),
+        step('चरण 2 - पूर्ण-वर्ग गुणनखंड खोजो','<br>'+K(n+' = '+POW(a,'2')+T+b)+'  (यहाँ '+K(POW(a,'2')+' = '+aa)+' पूर्ण वर्ग है)।'),
+        step('चरण 3 - मूल को तोड़ो','<br>'+K(RT(n)+' = '+RT(POW(a,'2'))+T+RT(b))+'।'),
+        step('चरण 4 - वर्गमूल बाहर निकालो','<br>'+K(RT(POW(a,'2'))+' = '+a)+', तो '+K(RT(n)+' = '+a+RT(b))+'।')
+      ], shortcut:'पूर्ण वर्ग बाहर निकालो: '+K(RT(n)+' = '+a+RT(b))+'।', hint:K(n)+' को विभाजित करने वाला सबसे बड़ा पूर्ण वर्ग खोजो।' }
     );
   };
 
@@ -103,11 +103,11 @@
         step('Step 4 - Final answer','<br>'+K(a)+'.')
       ], shortcut:K(RT(num)+D+RT(den)+' = '+FR(ab,b)+' = '+a)+'.', hint:'Pehle dono square root nikaalo, phir divide karo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(num)+D+RT(den))+' nikaalna hai.'),
-        step('Step 2 - Dono mool hal karo','<br>'+K(RT(num)+' = '+ab)+'  aur  '+K(RT(den)+' = '+b)+'.'),
-        step('Step 3 - Bhag do (upar ansh, niche har)','<br>'+K(FR(ab,b)+' = '+a)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(a)+'.')
-      ], shortcut:K(RT(num)+D+RT(den)+' = '+FR(ab,b)+' = '+a)+'.', hint:'Pehle dono vargmool nikaalo, phir bhag do.' }
+        step('चरण 1 - समझो','<br>'+K(RT(num)+D+RT(den))+' निकालना है।'),
+        step('चरण 2 - दोनों मूल हल करो','<br>'+K(RT(num)+' = '+ab)+'  और  '+K(RT(den)+' = '+b)+'।'),
+        step('चरण 3 - भाग दो (ऊपर अंश, नीचे हर)','<br>'+K(FR(ab,b)+' = '+a)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(a)+'।')
+      ], shortcut:K(RT(num)+D+RT(den)+' = '+FR(ab,b)+' = '+a)+'।', hint:'पहले दोनों वर्गमूल निकालो, फिर भाग दो।' }
     );
   };
 })();
