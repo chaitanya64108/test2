@@ -22,11 +22,11 @@
         step('Step 4 - Final answer','<br>'+K(fr(solAns))+'.')
       ], shortcut:K(RT(FR(sqN,sqD))+' = '+fr(solAns))+'.', hint:'Upar aur niche ka root alag-alag lo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(FR(sqN,sqD)))+' gyaat karna hai.'),
-        step('Step 2 - Bhinn ka niyam','<br>Bhinn ka vargmool = ansh ka mool bata har ka mool: '+K(RT(FR('a','b'))+' = '+FR(RT('a'),RT('b')))+'.'),
-        step('Step 3 - Lagao','<br>'+K(chain)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(fr(solAns))+'.')
-      ], shortcut:K(RT(FR(sqN,sqD))+' = '+fr(solAns))+'.', hint:'Ansh aur har ka mool alag-alag lo.' }
+        step('चरण 1 - समझो','<br>'+K(RT(FR(sqN,sqD)))+' निकालना है।'),
+        step('चरण 2 - भिन्न का नियम','<br>भिन्न का वर्गमूल = अंश का मूल बटा हर का मूल: '+K(RT(FR('a','b'))+' = '+FR(RT('a'),RT('b')))+'।'),
+        step('चरण 3 - लगाओ','<br>'+K(chain)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(fr(solAns))+'।')
+      ], shortcut:K(RT(FR(sqN,sqD))+' = '+fr(solAns))+'।', hint:'अंश और हर का मूल अलग-अलग लो।' }
     );
   };
 
@@ -46,11 +46,11 @@
         step('Step 4 - Final answer','<br>'+K(FR(sqN,sqD))+'.')
       ], shortcut:'Square karo: '+K(FR(n,d)+' \\to '+FR(sqN,sqD))+'.', hint:'Square karna square root ka ulta hai.' },
       { steps:[
-        step('Step 1 - Samjho','<br>Woh bhinn chahiye jiska vargmool '+K(FR(n,d))+' hai.'),
-        step('Step 2 - Ulta karo','<br>Vargmool ko ulta karne ke liye varg karo. Toh '+K(FR(n,d))+' ka varg karo.'),
-        step('Step 3 - Ansh-har ka varg','<br>'+K(calc)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(FR(sqN,sqD))+'.')
-      ], shortcut:'Varg karo: '+K(FR(n,d)+' \\to '+FR(sqN,sqD))+'.', hint:'Varg karna vargmool ka ulta hai.' }
+        step('चरण 1 - समझो','<br>वह भिन्न चाहिए जिसका वर्गमूल '+K(FR(n,d))+' है।'),
+        step('चरण 2 - उल्टा करो','<br>वर्गमूल को उल्टा करने के लिए वर्ग करो। तो '+K(FR(n,d))+' का वर्ग करो।'),
+        step('चरण 3 - अंश-हर का वर्ग','<br>'+K(calc)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(FR(sqN,sqD))+'।')
+      ], shortcut:'वर्ग करो: '+K(FR(n,d)+' \\to '+FR(sqN,sqD))+'।', hint:'वर्ग करना वर्गमूल का उल्टा है।' }
     );
   };
 
@@ -69,11 +69,11 @@
         step('Step 4 - Final answer','<br>'+K(FR(a*c,b*dd))+'.')
       ], shortcut:K(RT(FR(a*a,b*b))+T+RT(FR(c*c,dd*dd))+' = '+FR(a*c,b*dd))+'.', hint:'Pehle har square root nikaalo, phir bhinn guna karo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(FR(a*a,b*b))+T+RT(FR(c*c,dd*dd)))+' gyaat karna hai.'),
-        step('Step 2 - Har mool hal karo','<br>'+K(RT(FR(a*a,b*b))+' = '+FR(a,b))+' aur '+K(RT(FR(c*c,dd*dd))+' = '+FR(c,dd))+'.'),
-        step('Step 3 - Bhinn ka guna','<br>'+K(FR(a,b)+T+FR(c,dd)+' = '+FR(a*c,b*dd))+'  (ansh'+T+'ansh, har'+T+'har).'),
-        step('Step 4 - Antim uttar','<br>'+K(FR(a*c,b*dd))+'.')
-      ], shortcut:K(RT(FR(a*a,b*b))+T+RT(FR(c*c,dd*dd))+' = '+FR(a*c,b*dd))+'.', hint:'Pehle har vargmool nikaalo, phir bhinn ka guna karo.' }
+        step('चरण 1 - समझो','<br>'+K(RT(FR(a*a,b*b))+T+RT(FR(c*c,dd*dd)))+' निकालना है।'),
+        step('चरण 2 - हर मूल हल करो','<br>'+K(RT(FR(a*a,b*b))+' = '+FR(a,b))+' और '+K(RT(FR(c*c,dd*dd))+' = '+FR(c,dd))+'।'),
+        step('चरण 3 - भिन्न का गुणा','<br>'+K(FR(a,b)+T+FR(c,dd)+' = '+FR(a*c,b*dd))+'  (अंश'+T+'अंश, हर'+T+'हर)।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(FR(a*c,b*dd))+'।')
+      ], shortcut:K(RT(FR(a*a,b*b))+T+RT(FR(c*c,dd*dd))+' = '+FR(a*c,b*dd))+'।', hint:'पहले हर वर्गमूल निकालो, फिर भिन्न का गुणा करो।' }
     );
   };
 
@@ -93,11 +93,11 @@
         step('Step 4 - Final answer','<br>'+K(FR(sn,sd))+'.')
       ], shortcut:K(chain)+'.', hint:'Upar-niche ka root lo, phir common factor cancel karo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(FR(sqN,sqD)))+' ko saral karna hai.'),
-        step('Step 2 - Ansh-har ka mool','<br>'+K(RT(FR(sqN,sqD))+' = '+FR(RT(sqN),RT(sqD))+' = '+FR(2*sn,2*sd))+'.'),
-        step('Step 3 - Ubhaynishth gunank cancel','<br>'+K(2*sn)+' aur '+K(2*sd)+' dono me 2 hai, to '+K(FR(2*sn,2*sd)+' = '+FR(sn,sd))+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(FR(sn,sd))+'.')
-      ], shortcut:K(chain)+'.', hint:'Ansh-har ka mool lo, phir ubhaynishth gunank cancel karo.' }
+        step('चरण 1 - समझो','<br>'+K(RT(FR(sqN,sqD)))+' को सरल करना है।'),
+        step('चरण 2 - अंश-हर का मूल','<br>'+K(RT(FR(sqN,sqD))+' = '+FR(RT(sqN),RT(sqD))+' = '+FR(2*sn,2*sd))+'।'),
+        step('चरण 3 - उभयनिष्ठ गुणनखंड रद्द करो','<br>'+K(2*sn)+' और '+K(2*sd)+' दोनों में 2 है, तो '+K(FR(2*sn,2*sd)+' = '+FR(sn,sd))+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(FR(sn,sd))+'।')
+      ], shortcut:K(chain)+'।', hint:'अंश-हर का मूल लो, फिर उभयनिष्ठ गुणनखंड रद्द करो।' }
     );
   };
 
@@ -117,11 +117,11 @@
         step('Step 4 - Final answer','<br>'+K(FR(sqN,sqD))+'.')
       ], shortcut:'Square aur root cancel: answer '+K('= '+FR(sqN,sqD))+'.', hint:'$(\\sqrt{x})^{2} = x$.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(FR(sqN,sqD)))+' ka varg karna hai.'),
-        step('Step 2 - Main vichaar','<br>Varg karna vargmool ka ulta hai, to dono cancel ho jaate hain.'),
-        step('Step 3 - Parinaam','<br>'+K(calc)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(FR(sqN,sqD))+'.')
-      ], shortcut:'Varg aur mool cancel: uttar '+K('= '+FR(sqN,sqD))+'.', hint:'$(\\sqrt{x})^{2} = x$.' }
+        step('चरण 1 - समझो','<br>'+K(RT(FR(sqN,sqD)))+' का वर्ग करना है।'),
+        step('चरण 2 - मुख्य विचार','<br>वर्ग करना वर्गमूल का उल्टा है, तो दोनों रद्द हो जाते हैं।'),
+        step('चरण 3 - परिणाम','<br>'+K(calc)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(FR(sqN,sqD))+'।')
+      ], shortcut:'वर्ग और मूल रद्द: उत्तर '+K('= '+FR(sqN,sqD))+'।', hint:'$(\\sqrt{x})^{2} = x$.' }
     );
   };
 
@@ -141,11 +141,11 @@
         step('Step 4 - Final answer','<br>Badi bhinn hai '+K(fr(solAns))+'.')
       ], shortcut:'Cross-multiply: badi bhinn = '+K(fr(solAns))+'.', hint:'Do bhinn compare karne ke liye cross-multiply karo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(FR(a*a,b*b)))+' aur '+K(RT(FR(c*c,d*d)))+' ki tulna karni hai.'),
-        step('Step 2 - Har mool hal karo','<br>'+K(RT(FR(a*a,b*b))+' = '+FR(a,b))+' aur '+K(RT(FR(c*c,d*d))+' = '+FR(c,d))+'.'),
-        step('Step 3 - Tirchha guna karke tulna','<br>'+K(FR(a,b))+' aur '+K(FR(c,d))+': '+K('('+a+T+d+')'+sign+'('+b+T+c+')')+', arthaat '+K(ad+sign+bc)+'.'),
-        step('Step 4 - Antim uttar','<br>Badi bhinn hai '+K(fr(solAns))+'.')
-      ], shortcut:'Tirchha guna: badi bhinn = '+K(fr(solAns))+'.', hint:'Do bhinn ki tulna ke liye tirchha guna (cross-multiply) karo.' }
+        step('चरण 1 - समझो','<br>'+K(RT(FR(a*a,b*b)))+' और '+K(RT(FR(c*c,d*d)))+' की तुलना करनी है।'),
+        step('चरण 2 - हर मूल हल करो','<br>'+K(RT(FR(a*a,b*b))+' = '+FR(a,b))+' और '+K(RT(FR(c*c,d*d))+' = '+FR(c,d))+'।'),
+        step('चरण 3 - तिरछा गुणा करके तुलना','<br>'+K(FR(a,b))+' और '+K(FR(c,d))+': '+K('('+a+T+d+')'+sign+'('+b+T+c+')')+', अर्थात् '+K(ad+sign+bc)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>बड़ी भिन्न है '+K(fr(solAns))+'।')
+      ], shortcut:'तिरछा गुणा: बड़ी भिन्न = '+K(fr(solAns))+'।', hint:'दो भिन्न की तुलना के लिए तिरछा गुणा (cross-multiply) करो।' }
     );
   };
 })();

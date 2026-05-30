@@ -11,7 +11,7 @@
       return S(
         { steps:[ step('Step 1 - Understand','<br>We must find '+K(RT(decStr))+'.'), step('Step 2 - Recognise the perfect square','<br>'+K('('+ans+T+ans+') = '+decStr)+'.'), step('Step 3 - Final answer','<br>'+K(RT(decStr)+' = '+ans)+'.') ], shortcut:K(RT(decStr)+' = '+ans)+'.', hint:'Which number times itself gives '+K(decStr)+'?' },
         { steps:[ step('Step 1 - Samjho','<br>'+K(RT(decStr))+' nikaalna hai.'), step('Step 2 - Perfect square pehchaano','<br>'+K('('+ans+T+ans+') = '+decStr)+'.'), step('Step 3 - Final answer','<br>'+K(RT(decStr)+' = '+ans)+'.') ], shortcut:K(RT(decStr)+' = '+ans)+'.', hint:'Kaunsa number khud se guna karke '+K(decStr)+' deta hai?' },
-        { steps:[ step('Step 1 - Samjho','<br>'+K(RT(decStr))+' nikaalna hai.'), step('Step 2 - Poorn varg pehchaano','<br>'+K('('+ans+T+ans+') = '+decStr)+'.'), step('Step 3 - Antim uttar','<br>'+K(RT(decStr)+' = '+ans)+'.') ], shortcut:K(RT(decStr)+' = '+ans)+'.', hint:'Kaunsi sankhya khud se guna karke '+K(decStr)+' deti hai?' }
+        { steps:[ step('चरण 1 - समझो','<br>'+K(RT(decStr))+' निकालना है।'), step('चरण 2 - पूर्ण वर्ग पहचानो','<br>'+K('('+ans+T+ans+') = '+decStr)+'।'), step('चरण 3 - अंतिम उत्तर','<br>'+K(RT(decStr)+' = '+ans)+'।') ], shortcut:K(RT(decStr)+' = '+ans)+'।', hint:'कौन-सी संख्या स्वयं से गुणा करके '+K(decStr)+' देती है?' }
       );
     }
     return S(
@@ -28,11 +28,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:K(RT(decStr)+' = '+FR(RT(p.num),RT(p.den))+' = '+ans)+'.', hint:'Decimal ko fraction banao, phir upar-niche ka root lo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(decStr))+' nikaalna hai. Dashamlav ka vargmool bhinn banakar aasaan hai.'),
-        step('Step 2 - Bhinn me likho','<br>'+K(decStr+' = '+FR(p.num,p.den))+'  ('+p.s+' dashamlav sthan matlab '+K(p.den)+' se bhag).'),
-        step('Step 3 - Upar aur niche ka mool lo','<br>'+K(RT(decStr)+' = '+FR(RT(p.num),RT(p.den))+' = '+FR(p.sNum,p.sDen)+' = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:K(RT(decStr)+' = '+FR(RT(p.num),RT(p.den))+' = '+ans)+'.', hint:'Dashamlav ko bhinn banao, phir upar-niche ka mool lo.' }
+        step('चरण 1 - समझो','<br>'+K(RT(decStr))+' निकालना है। दशमलव का वर्गमूल भिन्न बनाकर आसान है।'),
+        step('चरण 2 - भिन्न में लिखो','<br>'+K(decStr+' = '+FR(p.num,p.den))+'  ('+p.s+' दशमलव स्थान मतलब '+K(p.den)+' से भाग)।'),
+        step('चरण 3 - ऊपर और नीचे का मूल लो','<br>'+K(RT(decStr)+' = '+FR(RT(p.num),RT(p.den))+' = '+FR(p.sNum,p.sDen)+' = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:K(RT(decStr)+' = '+FR(RT(p.num),RT(p.den))+' = '+ans)+'।', hint:'दशमलव को भिन्न बनाओ, फिर ऊपर-नीचे का मूल लो।' }
     );
   };
 
@@ -50,10 +50,10 @@
         step('Step 3 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:'Number '+K('= ('+root+')^{2} = '+ans)+'.', hint:'Square karna square root ka ulta hai.' },
       { steps:[
-        step('Step 1 - Samjho','<br>Woh sankhya chahiye jiska vargmool '+K(root)+' hai.'),
-        step('Step 2 - Varg karo','<br>Sankhya '+K('= ('+root+T+root+') = '+ans)+'.'),
-        step('Step 3 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:'Sankhya '+K('= ('+root+')^{2} = '+ans)+'.', hint:'Varg karna vargmool ka ulta hai.' }
+        step('चरण 1 - समझो','<br>वह संख्या चाहिए जिसका वर्गमूल '+K(root)+' है।'),
+        step('चरण 2 - वर्ग करो','<br>संख्या '+K('= ('+root+T+root+') = '+ans)+'।'),
+        step('चरण 3 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:'संख्या '+K('= ('+root+')^{2} = '+ans)+'।', hint:'वर्ग करना वर्गमूल का उल्टा है।' }
     );
   };
 
@@ -73,11 +73,11 @@
         step('Step 4 - Final answer','<br>'+K(res)+'.')
       ], shortcut:K(RT(String(da))+' + '+RT(String(db))+' = '+ra+' + '+rb+' = '+res)+'.', hint:'Pehle har decimal root nikaalo, phir jodo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(String(da))+' + '+RT(String(db)))+' nikaalna hai.'),
-        step('Step 2 - Har mool hal karo','<br>'+K(RT(String(da))+' = '+ra)+' aur '+K(RT(String(db))+' = '+rb)+'.'),
-        step('Step 3 - Jodo','<br>'+K('('+ra+') + ('+rb+') = '+res)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(res)+'.')
-      ], shortcut:K(RT(String(da))+' + '+RT(String(db))+' = '+ra+' + '+rb+' = '+res)+'.', hint:'Pehle har dashamlav mool nikaalo, phir jodo.' }
+        step('चरण 1 - समझो','<br>'+K(RT(String(da))+' + '+RT(String(db)))+' निकालना है।'),
+        step('चरण 2 - हर मूल हल करो','<br>'+K(RT(String(da))+' = '+ra)+' और '+K(RT(String(db))+' = '+rb)+'।'),
+        step('चरण 3 - जोड़ो','<br>'+K('('+ra+') + ('+rb+') = '+res)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(res)+'।')
+      ], shortcut:K(RT(String(da))+' + '+RT(String(db))+' = '+ra+' + '+rb+' = '+res)+'।', hint:'पहले हर दशमलव मूल निकालो, फिर जोड़ो।' }
     );
   };
 
@@ -94,10 +94,10 @@
         step('Step 3 - Final answer','<br>'+K(RT(n)+' = '+ans)+'.')
       ], shortcut:K(RT(n)+' = '+ans)+'.', hint:'Kaunsa whole number square karke '+K(n)+' deta hai?' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(n))+' nikaalna hai.'),
-        step('Step 2 - Poorn varg dekho','<br>'+K(n+' = '+POW(ans,'2'))+'  (kyunki '+K('('+ans+T+ans+') = '+n)+').'),
-        step('Step 3 - Antim uttar','<br>'+K(RT(n)+' = '+ans)+'.')
-      ], shortcut:K(RT(n)+' = '+ans)+'.', hint:'Kaunsi sankhya varg karke '+K(n)+' deti hai?' }
+        step('चरण 1 - समझो','<br>'+K(RT(n))+' निकालना है।'),
+        step('चरण 2 - पूर्ण वर्ग देखो','<br>'+K(n+' = '+POW(ans,'2'))+'  (क्योंकि '+K('('+ans+T+ans+') = '+n)+')।'),
+        step('चरण 3 - अंतिम उत्तर','<br>'+K(RT(n)+' = '+ans)+'।')
+      ], shortcut:K(RT(n)+' = '+ans)+'।', hint:'कौन-सी संख्या वर्ग करके '+K(n)+' देती है?' }
     );
   };
 
@@ -115,10 +115,10 @@
         step('Step 3 - Upar-niche ka root','<br>'+K(RT(decStr)+' = '+FR(p.sNum,p.sDen)+' = '+ans)+'.')
       ], shortcut:K(RT(decStr)+' = '+ans)+'.', hint:'Decimal ko fraction banao, phir upar-niche ka root lo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(decStr))+' nikaalna hai.'),
-        step('Step 2 - Bhinn me likho','<br>'+K(decStr+' = '+FR(p.num,p.den))+'.'),
-        step('Step 3 - Upar-niche ka mool','<br>'+K(RT(decStr)+' = '+FR(p.sNum,p.sDen)+' = '+ans)+'.')
-      ], shortcut:K(RT(decStr)+' = '+ans)+'.', hint:'Dashamlav ko bhinn banao, phir upar-niche ka mool lo.' }
+        step('चरण 1 - समझो','<br>'+K(RT(decStr))+' निकालना है।'),
+        step('चरण 2 - भिन्न में लिखो','<br>'+K(decStr+' = '+FR(p.num,p.den))+'।'),
+        step('चरण 3 - ऊपर-नीचे का मूल','<br>'+K(RT(decStr)+' = '+FR(p.sNum,p.sDen)+' = '+ans)+'।')
+      ], shortcut:K(RT(decStr)+' = '+ans)+'।', hint:'दशमलव को भिन्न बनाओ, फिर ऊपर-नीचे का मूल लो।' }
     );
   };
 
@@ -138,11 +138,11 @@
         step('Step 4 - Final answer','<br>'+K(big)+'.')
       ], shortcut:'Bada root = '+K(big)+'.', hint:'Dono root nikaalo, phir bada chuno.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(String(da)))+' aur '+K(RT(String(db)))+' me bada batana hai.'),
-        step('Step 2 - Har mool hal karo','<br>'+K(RT(String(da))+' = '+ra)+' aur '+K(RT(String(db))+' = '+rb)+'.'),
-        step('Step 3 - Tulna karo','<br>Bada maan hai '+K(big)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(big)+'.')
-      ], shortcut:'Bada mool = '+K(big)+'.', hint:'Dono mool nikaalo, phir bada chuno.' }
+        step('चरण 1 - समझो','<br>'+K(RT(String(da)))+' और '+K(RT(String(db)))+' में बड़ा बताना है।'),
+        step('चरण 2 - हर मूल हल करो','<br>'+K(RT(String(da))+' = '+ra)+' और '+K(RT(String(db))+' = '+rb)+'।'),
+        step('चरण 3 - तुलना करो','<br>बड़ा मान है '+K(big)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(big)+'।')
+      ], shortcut:'बड़ा मूल = '+K(big)+'।', hint:'दोनों मूल निकालो, फिर बड़ा चुनो।' }
     );
   };
 })();
