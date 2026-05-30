@@ -35,7 +35,7 @@
   });
   H.vars('cb_root1',[
     function(){ var ans=0; var w=[1,-1,2]; var sol=buildCbRoot1V1Solution(); return {question:tri('What is the value of '+K(CRT(0))+'?',K(CRT(0))+' kya hai?',K(CRT(0))+' क्या है?'),ans:String(ans),w:w.map(String),solution:sol}; },
-    function(){ var ans=1; var w=[0,-1,2]; var sol=buildCbRoot1V2Solution(); return {question:tri('What is '+K(CRT(1)+' + '+CRT(1))+'?',K(CRT(1)+' + '+CRT(1))+' kitna hai?',K(CRT(1)+' + '+CRT(1))+' कितना है?'),ans:String(ans),w:w.map(String),solution:sol}; },
+    function(){ var ans=2; var w=[1,0,-1]; var sol=buildCbRoot1V2Solution(); return {question:tri('What is '+K(CRT(1)+' + '+CRT(1))+'?',K(CRT(1)+' + '+CRT(1))+' kitna hai?',K(CRT(1)+' + '+CRT(1))+' कितना है?'),ans:String(ans),w:w.map(String),solution:sol}; },
     function(){ var n=rint(2,15), ans=n; var w=[-n,n*n,n*n*n]; var sol=buildCbRoot1V3Solution(n); return {question:tri('What is the value of '+K(CRT(POW(n,3)))+'?',K(CRT(POW(n,3)))+' kya hai?',K(CRT(POW(n,3)))+' का मान क्या है?'),ans:String(ans),w:w.map(String),solution:sol}; },
     function(){ var n=rint(2,10), cube=n*n*n; var w=[n+1,(n-1>0?n-1:n+2),-n]; var sol=buildCbRoot1V4Solution(n,cube); return {question:tri('If '+K(POW('y',3)+' = '+cube)+', what is the value of y?','Agar '+K(POW('y',3)+' = '+cube)+', to y ki value kya hai?','यदि '+K(POW('y',3)+' = '+cube)+', तो y का मान क्या है?'),ans:String(n),w:w.map(String),solution:sol}; },
     function(){ var a=rint(1,5),b=rint(1,5), ans=a+b; var w=[a*b,(a-b>0?a-b:0),ans+1]; var sol=buildCbRoot1V5Solution(a,b,ans); return {question:tri('What is '+K(CRT(a*a*a)+' + '+CRT(b*b*b))+'?',K(CRT(a*a*a)+' + '+CRT(b*b*b))+' kitna hai?',K(CRT(a*a*a)+' + '+CRT(b*b*b))+' कितना है?'),ans:String(ans),w:w.map(String),solution:sol}; }
