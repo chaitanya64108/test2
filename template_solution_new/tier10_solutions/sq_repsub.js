@@ -20,11 +20,11 @@
         step('Step 4 - Final answer','<br>Steps ki sankhya '+K('= '+r)+'.')
       ], shortcut:'Steps chahiye '+K('= '+RT(sq)+' = '+r)+'.', hint:'Pehle $k$ odd numbers ka sum = '+K(POW('k','2'))+', isliye steps = square root.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(sq))+' ko baar-baar ghatav se nikaalne ke liye hum visham sankhyaayein 1, 3, 5, ... ek-ek karke 0 aane tak ghatate hain, aur ginte hain kitni baar.'),
-        step('Step 2 - Mukhya vichaar','<br>Pehli $k$ visham sankhyaon ka yog hamesha $k^{2}$ hota hai: '+K('1 + 3 + 5 + ... + (2k-1) = '+POW('k','2'))+'.'),
-        step('Step 3 - Lagao','<br>Yahan '+K(sq+' = '+POW(r,'2'))+', to '+K(odds+' = '+sq)+'. Isme '+K(r)+' charan lage.'),
-        step('Step 4 - Antim uttar','<br>Charano ki sankhya '+K('= '+r)+'.')
-      ], shortcut:'Charan chahiye '+K('= '+RT(sq)+' = '+r)+'.', hint:'Pehli $k$ visham sankhyaon ka yog = '+K(POW('k','2'))+', isliye charan = vargmool.' }
+        step('चरण 1 - समझो','<br>'+K(RT(sq))+' को बार-बार घटाव से निकालने के लिए हम विषम संख्याएँ 1, 3, 5, ... एक-एक करके 0 आने तक घटाते हैं, और गिनते हैं कितनी बार।'),
+        step('चरण 2 - मुख्य विचार','<br>पहली $k$ विषम संख्याओं का योग हमेशा $k^{2}$ होता है: '+K('1 + 3 + 5 + ... + (2k-1) = '+POW('k','2'))+'।'),
+        step('चरण 3 - लगाओ','<br>यहाँ '+K(sq+' = '+POW(r,'2'))+', तो '+K(odds+' = '+sq)+'। इसमें '+K(r)+' चरण लगे।'),
+        step('चरण 4 - अंतिम उत्तर','<br>चरणों की संख्या '+K('= '+r)+'।')
+      ], shortcut:'चरण चाहिए '+K('= '+RT(sq)+' = '+r)+'।', hint:'पहली $k$ विषम संख्याओं का योग = '+K(POW('k','2'))+', इसलिए चरण = वर्गमूल।' }
     );
   };
 
@@ -43,11 +43,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:'Number '+K('= '+POW(r,'2')+' = '+ans)+'.', hint:'Steps = square root, isliye number = '+K(POW(r,'2'))+'.' },
       { steps:[
-        step('Step 1 - Samjho','<br>Visham sankhyaayein ghatate hue theek '+K(r)+' charan me 0 aaya. Mool sankhya nikaalni hai.'),
-        step('Step 2 - Main vichaar','<br>Charano ki sankhya vargmool ke barabar hoti hai, to sankhya '+K('= '+POW(r,'2'))+'.'),
-        step('Step 3 - Ganana','<br>'+K('('+r+T+r+') = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:'Sankhya '+K('= '+POW(r,'2')+' = '+ans)+'.', hint:'Charan = vargmool, isliye sankhya = '+K(POW(r,'2'))+'.' }
+        step('चरण 1 - समझो','<br>विषम संख्याएँ घटाते हुए ठीक '+K(r)+' चरण में 0 आया। मूल संख्या निकालनी है।'),
+        step('चरण 2 - मुख्य विचार','<br>चरणों की संख्या वर्गमूल के बराबर होती है, तो संख्या '+K('= '+POW(r,'2'))+'।'),
+        step('चरण 3 - गणना','<br>'+K('('+r+T+r+') = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:'संख्या '+K('= '+POW(r,'2')+' = '+ans)+'।', hint:'चरण = वर्गमूल, इसलिए संख्या = '+K(POW(r,'2'))+'।' }
     );
   };
 
@@ -64,10 +64,10 @@
         step('Step 3 - Final answer','<br>'+K(RT(sq)+' = '+r)+', isliye '+K(r)+' steps.')
       ], shortcut:'Steps '+K('= '+RT(sq)+' = '+r)+'.', hint:'Steps = '+K(RT(sq))+'.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(sq))+' nikaalne ke liye kitne visham-sankhya ghatav chahiye, woh ginna hai.'),
-        step('Step 2 - Main vichaar','<br>Charano ki sankhya = vargmool, aur '+K(sq+' = '+POW(r,'2'))+'.'),
-        step('Step 3 - Antim uttar','<br>'+K(RT(sq)+' = '+r)+', isliye '+K(r)+' charan.')
-      ], shortcut:'Charan '+K('= '+RT(sq)+' = '+r)+'.', hint:'Charan = '+K(RT(sq))+'.' }
+        step('चरण 1 - समझो','<br>'+K(RT(sq))+' निकालने के लिए कितने विषम-संख्या घटाव चाहिए, वह गिनना है।'),
+        step('चरण 2 - मुख्य विचार','<br>चरणों की संख्या = वर्गमूल, और '+K(sq+' = '+POW(r,'2'))+'।'),
+        step('चरण 3 - अंतिम उत्तर','<br>'+K(RT(sq)+' = '+r)+', इसलिए '+K(r)+' चरण।')
+      ], shortcut:'चरण '+K('= '+RT(sq)+' = '+r)+'।', hint:'चरण = '+K(RT(sq))+'।' }
     );
   };
 
@@ -86,11 +86,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:K(stp)+'-va odd number '+K('= (2'+T+stp+') - 1 = '+ans)+'.', hint:'$k$-va odd number = '+K('(2k - 1)')+'.' },
       { steps:[
-        step('Step 1 - Samjho','<br>Charan '+K(stp)+' par kaunsi visham sankhya ghatayi jaati hai, woh nikaalni hai.'),
-        step('Step 2 - Main vichaar','<br>Visham sankhyaayein hain 1, 3, 5, ...; $k$-vi visham sankhya hoti hai '+K('(2k - 1)')+'.'),
-        step('Step 3 - Lagao','<br>Charan '+K(stp)+' par: '+K('(2'+T+stp+') - 1 = '+(2*stp)+' - 1 = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:K(stp)+'-vi visham sankhya '+K('= (2'+T+stp+') - 1 = '+ans)+'.', hint:'$k$-vi visham sankhya = '+K('(2k - 1)')+'.' }
+        step('चरण 1 - समझो','<br>चरण '+K(stp)+' पर कौन-सी विषम संख्या घटाई जाती है, वह निकालनी है।'),
+        step('चरण 2 - मुख्य विचार','<br>विषम संख्याएँ हैं 1, 3, 5, ...; $k$-वीं विषम संख्या होती है '+K('(2k - 1)')+'।'),
+        step('चरण 3 - लगाओ','<br>चरण '+K(stp)+' पर: '+K('(2'+T+stp+') - 1 = '+(2*stp)+' - 1 = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:K(stp)+'-वीं विषम संख्या '+K('= (2'+T+stp+') - 1 = '+ans)+'।', hint:'$k$-वीं विषम संख्या = '+K('(2k - 1)')+'।' }
     );
   };
 
@@ -110,11 +110,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:'Remainder '+K('= '+sq+' - '+POW(stp,'2')+' = '+ans)+'.', hint:'Pehle $n$ odd numbers ka sum = '+K(POW('n','2'))+'.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(sq)+' se shuru karke pehli '+K(stp)+' visham sankhyaayein ghatao; shesh nikaalo.'),
-        step('Step 2 - Main vichaar','<br>Pehli '+K(stp)+' visham sankhyaon ka yog '+K('= '+POW(stp,'2')+' = '+ss)+'.'),
-        step('Step 3 - Ghatao','<br>'+K(sq+' - '+ss+' = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:'Shesh '+K('= '+sq+' - '+POW(stp,'2')+' = '+ans)+'.', hint:'Pehli $n$ visham sankhyaon ka yog = '+K(POW('n','2'))+'.' }
+        step('चरण 1 - समझो','<br>'+K(sq)+' से शुरू करके पहली '+K(stp)+' विषम संख्याएँ घटाओ; शेष निकालो।'),
+        step('चरण 2 - मुख्य विचार','<br>पहली '+K(stp)+' विषम संख्याओं का योग '+K('= '+POW(stp,'2')+' = '+ss)+'।'),
+        step('चरण 3 - घटाओ','<br>'+K(sq+' - '+ss+' = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:'शेष '+K('= '+sq+' - '+POW(stp,'2')+' = '+ans)+'।', hint:'पहली $n$ विषम संख्याओं का योग = '+K(POW('n','2'))+'।' }
     );
   };
 
@@ -134,11 +134,11 @@
         step('Step 4 - Final answer','<br>'+K(diff)+'.')
       ], shortcut:'Extra steps '+K('= '+big+' - '+sml+' = '+diff)+'.', hint:'Perfect square ke steps = uska square root.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(bigN))+' ko '+K(RT(smlN))+' se kitne charan adhik chahiye?'),
-        step('Step 2 - Main vichaar','<br>Charano ki sankhya = vargmool: '+K(RT(bigN)+' = '+big)+' aur '+K(RT(smlN)+' = '+sml)+'.'),
-        step('Step 3 - Antar','<br>'+K(big+' - '+sml+' = '+diff)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(diff)+'.')
-      ], shortcut:'Adhik charan '+K('= '+big+' - '+sml+' = '+diff)+'.', hint:'Poorn varg ke charan = uska vargmool.' }
+        step('चरण 1 - समझो','<br>'+K(RT(bigN))+' को '+K(RT(smlN))+' से कितने चरण अधिक चाहिए?'),
+        step('चरण 2 - मुख्य विचार','<br>चरणों की संख्या = वर्गमूल: '+K(RT(bigN)+' = '+big)+' और '+K(RT(smlN)+' = '+sml)+'।'),
+        step('चरण 3 - अंतर','<br>'+K(big+' - '+sml+' = '+diff)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(diff)+'।')
+      ], shortcut:'अधिक चरण '+K('= '+big+' - '+sml+' = '+diff)+'।', hint:'पूर्ण वर्ग के चरण = उसका वर्गमूल।' }
     );
   };
 })();

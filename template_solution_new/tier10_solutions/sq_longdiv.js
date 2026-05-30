@@ -26,12 +26,12 @@
         step('Step 5 - Final answer','<br>Remainder 0 hai, isliye '+K(RT(sq)+' = '+a)+'.')
       ], shortcut:'Perfect square ke liye '+K(RT(sq)+' = '+a)+' (exact 2-digit root).', hint:'Digits ko right se pair karo, phir ek-ek digit karke root nikaalo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(sq))+' ko deergh vibhajan vidhi se nikaalenge - ek-ek ank karke.'),
-        step('Step 2 - Jode banao','<br>'+K(sq)+' ke anko ko dayein se do-do me group karo: '+K(grp)+'. Do group matlab uttar 2 ank ka hoga.'),
-        step('Step 3 - Pehla ank','<br>Sabse badi sankhya jiska varg '+K(G1)+' se kam ya barabar ho, woh '+K(t)+' hai (kyunki '+K('('+t+T+t+') = '+(t*t))+'). Ghatao: '+K(G1+' - '+(t*t)+' = '+R1)+'.'),
-        step('Step 4 - Doosra ank','<br>Agla joda niche laao: '+K(bd)+'. Pehle ank ko dugna karo: '+K('2'+T+t+' = '+(2*t))+'. Aisa ank '+K('u')+' khojo ki '+K('('+div+')'+T+u+' = '+bd)+'. To '+K('u = '+u)+'.'),
-        step('Step 5 - Antim uttar','<br>Shesh 0 hai, isliye '+K(RT(sq)+' = '+a)+'.')
-      ], shortcut:'Poorn varg ke liye '+K(RT(sq)+' = '+a)+' (theek 2-ank mool).', hint:'Anko ko dayein se jode banao, phir ek-ek ank karke mool nikaalo.' }
+        step('चरण 1 - समझो','<br>'+K(RT(sq))+' को दीर्घ विभाजन विधि से निकालेंगे - एक-एक अंक करके।'),
+        step('चरण 2 - जोड़े बनाओ','<br>'+K(sq)+' के अंकों को दायें से दो-दो में समूह करो: '+K(grp)+'। दो समूह मतलब उत्तर 2 अंक का होगा।'),
+        step('चरण 3 - पहला अंक','<br>सबसे बड़ी संख्या जिसका वर्ग '+K(G1)+' से कम या बराबर हो, वह '+K(t)+' है (क्योंकि '+K('('+t+T+t+') = '+(t*t))+')। घटाओ: '+K(G1+' - '+(t*t)+' = '+R1)+'।'),
+        step('चरण 4 - दूसरा अंक','<br>अगला जोड़ा नीचे लाओ: '+K(bd)+'। पहले अंक को दुगुना करो: '+K('2'+T+t+' = '+(2*t))+'। ऐसा अंक '+K('u')+' खोजो कि '+K('('+div+')'+T+u+' = '+bd)+'। तो '+K('u = '+u)+'।'),
+        step('चरण 5 - अंतिम उत्तर','<br>शेष 0 है, इसलिए '+K(RT(sq)+' = '+a)+'।')
+      ], shortcut:'पूर्ण वर्ग के लिए '+K(RT(sq)+' = '+a)+' (ठीक 2-अंक मूल)।', hint:'अंकों को दायें से जोड़े बनाओ, फिर एक-एक अंक करके मूल निकालो।' }
     );
   };
 
@@ -50,11 +50,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:'Number '+K('= '+POW(r,'2')+' = '+ans)+'.', hint:'Agar root '+K(r)+' hai, toh number '+K(POW(r,'2'))+'.' },
       { steps:[
-        step('Step 1 - Samjho','<br>Deergh vibhajan se '+K(RT('?')+' = '+r)+' aaya. Woh sankhya nikaalni hai.'),
-        step('Step 2 - Ulta karo','<br>Vargmool ka ulta hai varg karna, to sankhya '+K('= '+POW(r,'2'))+'.'),
-        step('Step 3 - Ganana','<br>'+K('('+r+T+r+') = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:'Sankhya '+K('= '+POW(r,'2')+' = '+ans)+'.', hint:'Agar mool '+K(r)+' hai, to sankhya '+K(POW(r,'2'))+'.' }
+        step('चरण 1 - समझो','<br>दीर्घ विभाजन से '+K(RT('?')+' = '+r)+' आया। वह संख्या निकालनी है।'),
+        step('चरण 2 - उल्टा करो','<br>वर्गमूल का उल्टा है वर्ग करना, तो संख्या '+K('= '+POW(r,'2'))+'।'),
+        step('चरण 3 - गणना','<br>'+K('('+r+T+r+') = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:'संख्या '+K('= '+POW(r,'2')+' = '+ans)+'।', hint:'अगर मूल '+K(r)+' है, तो संख्या '+K(POW(r,'2'))+'।' }
     );
   };
 
@@ -74,11 +74,11 @@
         step('Step 4 - Final answer','<br>'+K(big)+'.')
       ], shortcut:'Root ke andar bada number, uska square root bhi bada: '+K(big)+'.', hint:'Dono root nikaalo, phir bada maan chuno.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(sa))+' aur '+K(RT(sb))+' me se bada batana hai.'),
-        step('Step 2 - Dono mool hal karo','<br>'+K(RT(sa)+' = '+a)+'  aur  '+K(RT(sb)+' = '+b)+'.'),
-        step('Step 3 - Tulna karo','<br>'+K(a)+' aur '+K(b)+' me bada hai '+K(big)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(big)+'.')
-      ], shortcut:'Mool ke andar badi sankhya, uska vargmool bhi bada: '+K(big)+'.', hint:'Dono mool nikaalo, phir bada maan chuno.' }
+        step('चरण 1 - समझो','<br>'+K(RT(sa))+' और '+K(RT(sb))+' में से बड़ा बताना है।'),
+        step('चरण 2 - दोनों मूल हल करो','<br>'+K(RT(sa)+' = '+a)+'  और  '+K(RT(sb)+' = '+b)+'।'),
+        step('चरण 3 - तुलना करो','<br>'+K(a)+' और '+K(b)+' में बड़ा है '+K(big)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(big)+'।')
+      ], shortcut:'मूल के अंदर बड़ी संख्या, उसका वर्गमूल भी बड़ा: '+K(big)+'।', hint:'दोनों मूल निकालो, फिर बड़ा मान चुनो।' }
     );
   };
 
@@ -98,11 +98,11 @@
         step('Step 4 - Final answer','<br>'+K(n)+'.')
       ], shortcut:'Pairs ki sankhya (right se) = '+K(n)+'.', hint:'Sabse dayein digit se shuru karke pairs banao.' },
       { steps:[
-        step('Step 1 - Samjho','<br>Deergh vibhajan me anko ko dayein se jodo me banate hain. '+K(num)+' ke liye jode ginne hain.'),
-        step('Step 2 - Jode banao','<br>'+K(grp)+'.'),
-        step('Step 3 - Gino','<br>Kul '+K(n)+' jode hain.'),
-        step('Step 4 - Antim uttar','<br>'+K(n)+'.')
-      ], shortcut:'Jodo ki sankhya (dayein se) = '+K(n)+'.', hint:'Sabse dayein ank se shuru karke jode banao.' }
+        step('चरण 1 - समझो','<br>दीर्घ विभाजन में अंकों को दायें से जोड़ों में बनाते हैं। '+K(num)+' के लिए जोड़े गिनने हैं।'),
+        step('चरण 2 - जोड़े बनाओ','<br>'+K(grp)+'।'),
+        step('चरण 3 - गिनो','<br>कुल '+K(n)+' जोड़े हैं।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(n)+'।')
+      ], shortcut:'जोड़ों की संख्या (दायें से) = '+K(n)+'।', hint:'सबसे दायें अंक से शुरू करके जोड़े बनाओ।' }
     );
   };
 
@@ -122,11 +122,11 @@
         step('Step 4 - Final answer','<br>'+K(RT(sq)+' = '+r)+'.')
       ], shortcut:K(RT(sq)+' = '+r)+'.', hint:K(sq)+' perfect square hai, toh root exact number '+K(r)+' hai.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(RT(sq))+' ko deergh vibhajan se nikaalna hai.'),
-        step('Step 2 - Jode banao','<br>Dayein se group karo: '+K(grp)+'.'),
-        step('Step 3 - Ek-ek ank karke mool nikaalo','<br>'+K(sq)+' poorn varg hai, isliye vibhajan shesh 0 pe khatam hota hai aur '+K(r)+' deta hai.'),
-        step('Step 4 - Antim uttar','<br>'+K(RT(sq)+' = '+r)+'.')
-      ], shortcut:K(RT(sq)+' = '+r)+'.', hint:K(sq)+' poorn varg hai, to mool theek '+K(r)+' hai.' }
+        step('चरण 1 - समझो','<br>'+K(RT(sq))+' को दीर्घ विभाजन से निकालना है।'),
+        step('चरण 2 - जोड़े बनाओ','<br>दायें से समूह करो: '+K(grp)+'।'),
+        step('चरण 3 - एक-एक अंक करके मूल निकालो','<br>'+K(sq)+' पूर्ण वर्ग है, इसलिए विभाजन शेष 0 पर खत्म होता है और '+K(r)+' देता है।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(RT(sq)+' = '+r)+'।')
+      ], shortcut:K(RT(sq)+' = '+r)+'।', hint:K(sq)+' पूर्ण वर्ग है, तो मूल ठीक '+K(r)+' है।' }
     );
   };
 
@@ -146,11 +146,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:K(RT(sq)+' = '+r)+', digit sum '+K('= '+ans)+'.', hint:'Pehle root nikaalo, phir uske digits jodo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>Pehle deergh vibhajan se '+K(RT(sq))+' nikaalo, phir uttar ke anko ka yog karo.'),
-        step('Step 2 - Mool nikaalo','<br>'+K(RT(sq)+' = '+r)+'.'),
-        step('Step 3 - Anko ka yog','<br>'+K(ds+' = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:K(RT(sq)+' = '+r)+', anko ka yog '+K('= '+ans)+'.', hint:'Pehle mool nikaalo, phir uske anko ko jodo.' }
+        step('चरण 1 - समझो','<br>पहले दीर्घ विभाजन से '+K(RT(sq))+' निकालो, फिर उत्तर के अंकों का योग करो।'),
+        step('चरण 2 - मूल निकालो','<br>'+K(RT(sq)+' = '+r)+'।'),
+        step('चरण 3 - अंकों का योग','<br>'+K(ds+' = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:K(RT(sq)+' = '+r)+', अंकों का योग '+K('= '+ans)+'।', hint:'पहले मूल निकालो, फिर उसके अंकों को जोड़ो।' }
     );
   };
 })();
