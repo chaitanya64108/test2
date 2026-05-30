@@ -1,0 +1,47 @@
+/* tier12 batch6 — templates solve_sq_eq, solve_cb_eq, compare_sq (base+variants) */
+(function(){
+  var H=window.QT; if(!H) return;
+  var K=H.K,RT=H.RT,CRT=H.CRT,FR=H.FR,PM=H.PM,tri=H.tri;
+
+  /* 59. Solve √ / Square Equation */
+  H.base('solve_sq_eq', function(){
+    var variant=rint(0,2); var r=rint(2,20);
+    if(variant===0){ var n=r*r; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for the positive value of x: '+K('x^{2}')+' = '+K(n)+'.','x ka positive maan nikaalo: '+K('x^{2}')+' = '+K(n)+'.','x का धनात्मक मान ज्ञात कीजिए: '+K('x^{2}')+' = '+K(n)+'।'),ans:String(r),w:w.map(String)}; }
+    else if(variant===1){ var add=rint(1,30); var n=r*r,total=n+add; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for positive x: '+K('x^{2} + '+add)+' = '+K(total)+'.','positive x nikaalo: '+K('x^{2} + '+add)+' = '+K(total)+'.','धनात्मक x ज्ञात कीजिए: '+K('x^{2} + '+add)+' = '+K(total)+'।'),ans:String(r),w:w.map(String)}; }
+    else { var sub=rint(1,r*r-1); var n=r*r,val=n-sub; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for positive x: '+K('x^{2} - '+sub)+' = '+K(val)+'.','positive x nikaalo: '+K('x^{2} - '+sub)+' = '+K(val)+'.','धनात्मक x ज्ञात कीजिए: '+K('x^{2} - '+sub)+' = '+K(val)+'।'),ans:String(r),w:w.map(String)}; }
+  });
+  H.vars('solve_sq_eq',[
+    function(){ var k=rint(2,4),r=rint(2,15); var n=k*r*r; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for positive x: '+K(k+'x^{2}')+' = '+K(n)+'.','positive x nikaalo: '+K(k+'x^{2}')+' = '+K(n)+'.','धनात्मक x ज्ञात कीजिए: '+K(k+'x^{2}')+' = '+K(n)+'।'),ans:String(r),w:w.map(String)}; },
+    function(){ var r=rint(2,25); var n=r*r; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('If '+K('x^{2}')+' = '+K(n)+' and x > 0, find x.','Agar '+K('x^{2}')+' = '+K(n)+' aur x > 0, to x = ?','यदि '+K('x^{2}')+' = '+K(n)+' और x > 0, तो x = ?'),ans:String(r),w:w.map(String)}; },
+    function(){ var k=rint(2,5),t=rint(1,4); var r=k*t; var m=r*r/k; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for positive x: '+K(FR('x^{2}',k))+' = '+K(m)+'.','positive x nikaalo: '+K(FR('x^{2}',k))+' = '+K(m)+'.','धनात्मक x ज्ञात कीजिए: '+K(FR('x^{2}',k))+' = '+K(m)+'।'),ans:String(r),w:w.map(String)}; },
+    function(){ for(var i=0;i<30;i++){ var r=rint(3,18),a=rint(1,20); var b=r*r-a; if(b<0) continue; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for positive x: '+K('x^{2} - '+a)+' = '+K(b)+'.','positive x nikaalo: '+K('x^{2} - '+a)+' = '+K(b)+'.','धनात्मक x ज्ञात कीजिए: '+K('x^{2} - '+a)+' = '+K(b)+'।'),ans:String(r),w:w.map(String)}; } return {question:tri('Solve for positive x: '+K('x^{2} - 4')+' = '+K(21)+'.','positive x nikaalo: '+K('x^{2} - 4')+' = '+K(21)+'.','धनात्मक x: '+K('x^{2} - 4')+' = '+K(21)+'।'),ans:'5',w:['6','4','7']}; },
+    function(){ var r=rint(2,15); var n=r*r; return {question:tri('Solve completely (all real roots): '+K('x^{2}')+' = '+K(n)+'.','Poora solve karo (sabhi roots): '+K('x^{2}')+' = '+K(n)+'.','पूरा हल कीजिए (सभी मूल): '+K('x^{2}')+' = '+K(n)+'।'),ans:K(PM+r),w:[K(r),K('-'+r),K(PM+(r+1))]}; }
+  ]);
+
+  /* 60. Solve ∛ / Cube Equation */
+  H.base('solve_cb_eq', function(){
+    var variant=rint(0,2); var r=rint(2,10);
+    if(variant===0){ var n=r*r*r; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for x: '+K('x^{3}')+' = '+K(n)+'.','x nikaalo: '+K('x^{3}')+' = '+K(n)+'.','x ज्ञात कीजिए: '+K('x^{3}')+' = '+K(n)+'।'),ans:String(r),w:w.map(String)}; }
+    else if(variant===1){ var add=rint(1,40); var n=r*r*r,total=n+add; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for x: '+K('x^{3} + '+add)+' = '+K(total)+'.','x nikaalo: '+K('x^{3} + '+add)+' = '+K(total)+'.','x ज्ञात कीजिए: '+K('x^{3} + '+add)+' = '+K(total)+'।'),ans:String(r),w:w.map(String)}; }
+    else { var sub=rint(1,r*r*r-1); var n=r*r*r,val=n-sub; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for x: '+K('x^{3} - '+sub)+' = '+K(val)+'.','x nikaalo: '+K('x^{3} - '+sub)+' = '+K(val)+'.','x ज्ञात कीजिए: '+K('x^{3} - '+sub)+' = '+K(val)+'।'),ans:String(r),w:w.map(String)}; }
+  });
+  H.vars('solve_cb_eq',[
+    function(){ var k=rint(2,4),r=rint(2,9); var n=k*r*r*r; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for x: '+K(k+'x^{3}')+' = '+K(n)+'.','x nikaalo: '+K(k+'x^{3}')+' = '+K(n)+'.','x ज्ञात कीजिए: '+K(k+'x^{3}')+' = '+K(n)+'।'),ans:String(r),w:w.map(String)}; },
+    function(){ var r=rint(2,11); var n=r*r*r; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('If '+K('x^{3}')+' = '+K(n)+', find x.','Agar '+K('x^{3}')+' = '+K(n)+', to x = ?','यदि '+K('x^{3}')+' = '+K(n)+', तो x = ?'),ans:String(r),w:w.map(String)}; },
+    function(){ var k=rint(2,4),t=rint(1,3); var r=k*t; var m=r*r*r/k; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for x: '+K(FR('x^{3}',k))+' = '+K(m)+'.','x nikaalo: '+K(FR('x^{3}',k))+' = '+K(m)+'.','x ज्ञात कीजिए: '+K(FR('x^{3}',k))+' = '+K(m)+'।'),ans:String(r),w:w.map(String)}; },
+    function(){ for(var i=0;i<30;i++){ var r=rint(2,9),a=rint(1,40); var b=r*r*r-a; if(b<0) continue; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('Solve for x: '+K('x^{3} - '+a)+' = '+K(b)+'.','x nikaalo: '+K('x^{3} - '+a)+' = '+K(b)+'.','x ज्ञात कीजिए: '+K('x^{3} - '+a)+' = '+K(b)+'।'),ans:String(r),w:w.map(String)}; } return {question:tri('Solve for x: '+K('x^{3} - 3')+' = '+K(24)+'.','x nikaalo: '+K('x^{3} - 3')+' = '+K(24)+'.','x ज्ञात कीजिए: '+K('x^{3} - 3')+' = '+K(24)+'।'),ans:'3',w:['4','2','5']}; },
+    function(){ var r=rint(2,9); var n=r*r*r; var w=[r+1,r-1>0?r-1:r+2,r+2]; return {question:tri('A cube has volume '+K(n)+' cm³. Find the length of its edge (in cm).','Ek cube ka volume '+K(n)+' cm³ hai. Uske edge ki lambai (cm) nikaalo.','एक घन का आयतन '+K(n)+' cm³ है। उसके किनारे की लंबाई (cm) ज्ञात कीजिए।'),ans:String(r),w:w.map(String)}; }
+  ]);
+
+  /* 61. Compare √ Values */
+  H.base('compare_sq', function(){
+    var nonsq=[2,3,5,6,7,8,10,11,12,13,14,15]; var a=pick(nonsq),b=pick(nonsq); while(b===a)b=pick(nonsq); var A=K(RT(a)),B=K(RT(b)); var ans=a>b?A:B,lo=a>b?B:A; return {question:tri('Which is greater: '+A+' or '+B+'?','Bada kaun: '+A+' ya '+B+'?','बड़ा कौन: '+A+' या '+B+'?'),ans:ans,w:[lo,'Equal','Cannot determine']};
+  });
+  H.vars('compare_sq',[
+    function(){ var pool=[2,3,5,6,7,8,10,11,13,14]; var arr=shuffle(pool.slice()).slice(0,3); var maxv=Math.max.apply(null,arr); var opts=arr.map(function(n){return K(RT(n));}); var w=arr.filter(function(n){return n!==maxv;}).map(function(n){return K(RT(n));}); w.push('All equal'); return {question:tri('Which is the greatest: '+opts.join(', ')+'?','Sabse bada kaun: '+opts.join(', ')+'?','सबसे बड़ा कौन: '+opts.join(', ')+'?'),ans:K(RT(maxv)),w:w}; },
+    function(){ var k=rint(2,6); var choices=[k*k-rint(1,Math.min(3,k*k-1)),k*k,k*k+rint(1,3)]; var a=pick(choices); var sym=a>k*k?'>':(a<k*k?'<':'='); var w=['>','<','='].filter(function(s){return s!==sym;}); w.push('Cannot determine'); return {question:tri('Compare (fill >, <, or =): '+K(RT(a))+' ___ '+K(k),'Compare karo (>, <, ya =): '+K(RT(a))+' ___ '+K(k),'तुलना (>, <, या =): '+K(RT(a))+' ___ '+K(k)),ans:sym,w:w}; },
+    function(){ var pool=[2,3,5,6,7,8,10,11,13]; var arr=shuffle(pool.slice()).slice(0,3); var minv=Math.min.apply(null,arr); var opts=arr.map(function(n){return K(RT(n));}); var w=arr.filter(function(n){return n!==minv;}).map(function(n){return K(RT(n));}); w.push('All equal'); return {question:tri('Which is the smallest: '+opts.join(', ')+'?','Sabse chhota kaun: '+opts.join(', ')+'?','सबसे छोटा कौन: '+opts.join(', ')+'?'),ans:K(RT(minv)),w:w}; },
+    function(){ for(var i=0;i<30;i++){ var c=rint(2,3),a=pick([2,3,5,6,7]); var valA=c*c*a; var b=pick([11,13,14,17,19,20,23,26,29]); if(valA===b) continue; var A=K(c+RT(a)),B=K(RT(b)); var ans=valA>b?A:B,lo=valA>b?B:A; return {question:tri('Which is greater: '+A+' or '+B+'?','Bada kaun: '+A+' ya '+B+'?','बड़ा कौन: '+A+' या '+B+'?'),ans:ans,w:[lo,'Equal','Cannot determine']}; } var A=K('2'+RT(5)),B=K(RT(19)); return {question:tri('Which is greater: '+A+' or '+B+'?','Bada kaun: '+A+' ya '+B+'?','बड़ा कौन: '+A+' या '+B+'?'),ans:A,w:[B,'Equal','Cannot determine']}; },
+    function(){ for(var i=0;i<30;i++){ var c1=rint(2,3),a1=pick([2,3,5,7]); var c2=rint(2,3),a2=pick([2,3,5,7]); var v1=c1*c1*a1,v2=c2*c2*a2; if(v1===v2) continue; var A=K(c1+RT(a1)),B=K(c2+RT(a2)); var ans=v1>v2?A:B,lo=v1>v2?B:A; return {question:tri('Which is greater: '+A+' or '+B+'?','Bada kaun: '+A+' ya '+B+'?','बड़ा कौन: '+A+' या '+B+'?'),ans:ans,w:[lo,'Equal','Cannot determine']}; } var A=K('2'+RT(5)),B=K('3'+RT(2)); return {question:tri('Which is greater: '+A+' or '+B+'?','Bada kaun: '+A+' ya '+B+'?','बड़ा कौन: '+A+' या '+B+'?'),ans:A,w:[B,'Equal','Cannot determine']}; }
+  ]);
+})();
