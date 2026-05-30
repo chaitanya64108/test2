@@ -23,11 +23,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:'Odd-power primes ke product '+K('= '+ans)+' se multiply karo.', hint:'Perfect square tabhi banta hai jab har prime factor even baar aaye.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(num)+' ko sabse chhoti kis sankhya se guna karein ki wo poorn varg ban jaaye.'),
-        step('Step 2 - Abhajya gunankhand','<br>'+K(num+' = '+fs)+'.  <i>Poorn varg me har abhajya gunank sam (even) baar, yaani jodi me aana chahiye.</i>'),
-        step('Step 3 - Akeli abhajya dhoondo','<br>Ye abhajya vishm (odd) baar aati hain: '+K(oddStr)+'. Inke gunanfal '+K('= '+ans)+' se guna karo.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:'Vishm-ghaat abhajyaon ke gunanfal '+K('= '+ans)+' se guna karo.', hint:'Poorn varg tabhi banta hai jab har abhajya gunank sam baar aaye.' }
+        step('चरण 1 - समझो','<br>'+K(num)+' को सबसे छोटी किस संख्या से गुणा करें कि वह पूर्ण वर्ग बन जाए।'),
+        step('चरण 2 - अभाज्य गुणनखंड','<br>'+K(num+' = '+fs)+'.  <i>पूर्ण वर्ग में हर अभाज्य गुणनखंड सम (even) बार, यानी जोड़े में आना चाहिए।</i>'),
+        step('चरण 3 - अकेली अभाज्य खोजो','<br>ये अभाज्य विषम (odd) बार आती हैं: '+K(oddStr)+'। इनके गुणनफल '+K('= '+ans)+' से गुणा करो।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:'विषम-घात अभाज्यों के गुणनफल '+K('= '+ans)+' से गुणा करो।', hint:'पूर्ण वर्ग तभी बनता है जब हर अभाज्य गुणनखंड सम बार आए।' }
     );
   };
 
@@ -47,11 +47,11 @@
         step('Step 4 - Final answer','<br>Yes - '+K(ans)+'.')
       ], shortcut:K(num+T+multiplier+' = '+ans+' = '+POW(root,'2'))+'.', hint:'Perfect square ka square root whole number hota hai.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(num)+' ko '+K(multiplier)+' se guna karke jaancho ki parinaam poorn varg hai ya nahi.'),
-        step('Step 2 - Guna','<br>'+K(num+T+multiplier+' = '+ans)+'.'),
-        step('Step 3 - Poorn varg jaanch','<br>'+K(RT(ans)+' = '+root)+', ek poorn sankhya, to haan '+K(ans)+' poorn varg hai.'),
-        step('Step 4 - Antim uttar','<br>Yes - '+K(ans)+'.')
-      ], shortcut:K(num+T+multiplier+' = '+ans+' = '+POW(root,'2'))+'.', hint:'Poorn varg ka vargmool poorn sankhya hota hai.' }
+        step('चरण 1 - समझो','<br>'+K(num)+' को '+K(multiplier)+' से गुणा करके जाँचो कि परिणाम पूर्ण वर्ग है या नहीं।'),
+        step('चरण 2 - गुणा','<br>'+K(num+T+multiplier+' = '+ans)+'।'),
+        step('चरण 3 - पूर्ण वर्ग जाँच','<br>'+K(RT(ans)+' = '+root)+', एक पूर्ण संख्या, तो हाँ '+K(ans)+' पूर्ण वर्ग है।'),
+        step('चरण 4 - अंतिम उत्तर','<br>हाँ - '+K(ans)+'।')
+      ], shortcut:K(num+T+multiplier+' = '+ans+' = '+POW(root,'2'))+'।', hint:'पूर्ण वर्ग का वर्गमूल पूर्ण संख्या होता है।' }
     );
   };
 
@@ -71,11 +71,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:'Number '+K('= '+sa+T+sb+' = '+ans)+'.', hint:'$a^{2}\\times b^{2} = (ab)^{2}$.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(na+T+nb)+' kis sankhya ka poorn varg hai?'),
-        step('Step 2 - Har ko varg likho','<br>'+K(na+' = '+POW(sa,'2'))+' aur '+K(nb+' = '+POW(sb,'2'))+'.'),
-        step('Step 3 - Milao','<br>'+K(na+T+nb+' = ('+sa+T+sb+')^{2} = '+POW(ans,'2'))+', to sankhya hai '+K(ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:'Sankhya '+K('= '+sa+T+sb+' = '+ans)+'.', hint:'$a^{2}\\times b^{2} = (ab)^{2}$.' }
+        step('चरण 1 - समझो','<br>'+K(na+T+nb)+' किस संख्या का पूर्ण वर्ग है?'),
+        step('चरण 2 - हर को वर्ग लिखो','<br>'+K(na+' = '+POW(sa,'2'))+' और '+K(nb+' = '+POW(sb,'2'))+'।'),
+        step('चरण 3 - मिलाओ','<br>'+K(na+T+nb+' = ('+sa+T+sb+')^{2} = '+POW(ans,'2'))+', तो संख्या है '+K(ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:'संख्या '+K('= '+sa+T+sb+' = '+ans)+'।', hint:'$a^{2}\\times b^{2} = (ab)^{2}$.' }
     );
   };
 
@@ -95,11 +95,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:K(RT(num+T+p)+' = '+ans)+'.', hint:'Pehle multiply karo, phir product ka square root lo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(num)+' ko '+K(p)+' se guna karke gunanfal ka vargmool nikaalo.'),
-        step('Step 2 - Guna','<br>'+K(num+T+p+' = '+prod)+'.'),
-        step('Step 3 - Vargmool lo','<br>'+K(prod+' = '+POW(ans,'2'))+', to '+K(RT(prod)+' = '+ans)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:K(RT(num+T+p)+' = '+ans)+'.', hint:'Pehle guna karo, phir gunanfal ka vargmool lo.' }
+        step('चरण 1 - समझो','<br>'+K(num)+' को '+K(p)+' से गुणा करके गुणनफल का वर्गमूल निकालो।'),
+        step('चरण 2 - गुणा','<br>'+K(num+T+p+' = '+prod)+'।'),
+        step('चरण 3 - वर्गमूल लो','<br>'+K(prod+' = '+POW(ans,'2'))+', तो '+K(RT(prod)+' = '+ans)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:K(RT(num+T+p)+' = '+ans)+'।', hint:'पहले गुणा करो, फिर गुणनफल का वर्गमूल लो।' }
     );
   };
 
@@ -119,11 +119,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+' se multiply karo.')
       ], shortcut:'Bina-jodi factor '+K('= '+ans)+' se multiply karo.', hint:'Jis factor ki jodi nahi hai usse multiply karo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(num)+' ko kisi sankhya se guna karke poorn varg banana hai.'),
-        step('Step 2 - Gunankhand','<br>'+K(num+' = '+base+T+POW(sqPart,'2'))+'. Yahan '+K(POW(sqPart,'2'))+' pehle se poorn varg hai, par '+K(base)+' akela hai.'),
-        step('Step 3 - Akele gunank ko jodi do','<br>'+K(base)+' se guna karo: '+K(fin)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+' se guna karo.')
-      ], shortcut:'Bina-jodi gunank '+K('= '+ans)+' se guna karo.', hint:'Jis gunank ki jodi nahi hai usse guna karo.' }
+        step('चरण 1 - समझो','<br>'+K(num)+' को किसी संख्या से गुणा करके पूर्ण वर्ग बनाना है।'),
+        step('चरण 2 - गुणनखंड','<br>'+K(num+' = '+base+T+POW(sqPart,'2'))+'. यहाँ '+K(POW(sqPart,'2'))+' पहले से पूर्ण वर्ग है, पर '+K(base)+' अकेला है।'),
+        step('चरण 3 - अकेले गुणनखंड को जोड़ी दो','<br>'+K(base)+' से गुणा करो: '+K(fin)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+' से गुणा करो।')
+      ], shortcut:'बिना-जोड़ी गुणनखंड '+K('= '+ans)+' से गुणा करो।', hint:'जिस गुणनखंड की जोड़ी नहीं है उससे गुणा करो।' }
     );
   };
 
@@ -143,11 +143,11 @@
         step('Step 4 - Final answer','<br>'+K(ans)+'.')
       ], shortcut:'Sabse chhota multiplier = bina-jodi factor '+K('= '+ans)+'.', hint:'Jis factor ki jodi nahi hai usse multiply karo.' },
       { steps:[
-        step('Step 1 - Samjho','<br>'+K(num)+' ko poorn varg banane ke liye sabse chhota gunak nikaalo.'),
-        step('Step 2 - Gunankhand','<br>'+K(num+' = '+base+T+POW(sqPart,'2'))+'. '+K(POW(sqPart,'2'))+' jodi me hai; '+K(base)+' akela hai.'),
-        step('Step 3 - Akele gunank se guna','<br>'+K(fin)+'.'),
-        step('Step 4 - Antim uttar','<br>'+K(ans)+'.')
-      ], shortcut:'Sabse chhota gunak = bina-jodi gunank '+K('= '+ans)+'.', hint:'Jis gunank ki jodi nahi hai usse guna karo.' }
+        step('चरण 1 - समझो','<br>'+K(num)+' को पूर्ण वर्ग बनाने के लिए सबसे छोटा गुणक निकालो।'),
+        step('चरण 2 - गुणनखंड','<br>'+K(num+' = '+base+T+POW(sqPart,'2'))+'. '+K(POW(sqPart,'2'))+' जोड़ी में है; '+K(base)+' अकेला है।'),
+        step('चरण 3 - अकेले गुणनखंड से गुणा','<br>'+K(fin)+'।'),
+        step('चरण 4 - अंतिम उत्तर','<br>'+K(ans)+'।')
+      ], shortcut:'सबसे छोटा गुणक = बिना-जोड़ी गुणनखंड '+K('= '+ans)+' से गुणा करो।', hint:'जिस गुणनखंड की जोड़ी नहीं है उससे गुणा करो।' }
     );
   };
 })();
